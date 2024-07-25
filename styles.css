@@ -1,0 +1,29 @@
+body {
+  margin: 0 auto;
+  max-width: 80rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Fenwick Woodtype";
+  font-size: calc(1rem + 12vw);
+  font-weight: 100;
+  color: goldenrod;
+}
+
+button {
+  font-family: Cardiff;
+  font-size: calc(1rem + 2vw);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+button:hover {
+  background-color: cornflowerblue;
+  color: deeppink;
+}
+
+#output {
+  font-size: calc(1rem + 5vw);
+
+}
