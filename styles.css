@@ -1,7 +1,8 @@
 body {
   margin: 0 auto;
   max-width: 80rem;
-  text-align: center;
+  font-size: calc(1rem + 1vw);
+  padding: 15px;
 }
 
 h1 {
@@ -9,21 +10,33 @@ h1 {
   font-size: calc(1rem + 12vw);
   font-weight: 100;
   color: goldenrod;
+  text-align: center;
+  margin-top: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: calc(1rem + 5vw);
+  margin-bottom: 0;
 }
 
 button {
-  font-family: Cardiff;
   font-size: calc(1rem + 2vw);
   border-radius: 5px;
   padding: 1rem;
 }
 
-button:hover {
-  background-color: cornflowerblue;
-  color: deeppink;
+.button-container {
+  text-align: center;
 }
 
-#output {
-  font-size: calc(1rem + 5vw);
+#pairings {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
 
+#pairings ul {
+  list-style-type: none;
+  padding: 0;
 }

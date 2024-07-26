@@ -1,7 +1,15 @@
-const output = document.querySelector("#output");
+const studentsList = document.querySelector("#students-list");
+const saintsList = document.querySelector("#saints-list");
+const updateStudentsBtn = document.querySelector("#update-students");
 const chooseBtn = document.querySelector("#choose");
+const numberOfStudentsInput = document.querySelector("#number-of-students");
 
-const students = ["Bart", "Marge", "Maggie"];
+let numberOfStudents = 30;
+
+updateStudentsBtn.onclick = () => {
+  numberOfStudents = numberOfStudentsInput.value;
+};
+
 const saints = [
   "Joan of Arc",
   "Thomas Aquinas",
@@ -16,20 +24,43 @@ const saints = [
   "Saint Catherine of Siena",
   "Saint Francis Xavier",
   "Saint Ignatius of Loyola",
-  "Saint Bernadette"
+  "Saint Bernadette",
+  "Saint Joseph",
+  "Saint Mary Magdalene",
+  "Saint Peter",
+  "Saint Paul",
+  "Saint Matthew",
+  "Saint Mark",
+  "Saint Luke",
+  "Saint John",
+  "Saint James",
+  "Saint Jude",
+  "Saint Andrew",
+  "Saint Bartholomew",
+  "Saint Philip",
+  "Saint Simon",
+  "Saint Matthias",
+  "Saint Stephen",
 ];
 
-function shuffleArray(array) {
-  for (let length = array.length - 1; length > 0; length--) {
-    const randomIndex = Math.floor(Math.random() * (length + 1));
-    [array[length], array[randomIndex]] = [array[randomIndex], array[length]];
+function getRandomElements(array, number) {
+  const randomElements = [];
+
+  while (randomElements.length < number) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    const randomElement = array[randomIndex];
+
+    if (!randomElements.includes(randomElement)) {
+      randomElements.push(randomElement);
+    }
   }
-  return array;
+
+  return randomElements;
 }
 
 chooseBtn.onclick = () => {
-  shuffleArray(saints);
-  console.log(saints);
+  const list = getRandomElements(saints, numberOfStudents);
+  for (let saint of list) {
+    saintsList.innerHTML += `<li>${saint}</li>`;
+  }
 };
-
-// We want to generate the entire list at once, so we need to loop through the students array and call the function for each student

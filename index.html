@@ -6,12 +6,20 @@
     <title>Spending Tracker</title>
     <!-- <script src="app.js" defer></script> -->
     <script src="list-app.js" async></script>
-    <link rel="stylesheet" href="styles.css">
+    <script src="test.js" async></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <h1>Saint Chooser App</h1>
-    <button id="choose">Choose Your Fighter</button>
-    <output id="output"></output>
+    <div class="button-container">
+      <button id="choose">Choose Your Fighter</button>
+    </div>
+    <input type="number" id="number-of-students" min="0"/>
+    <button id="update-students">Update Students</button>
+    <h2>Pairings</h2>
+    <div id="pairings">
+      <ol id="saints-list"></ol>
+    </div>
   </body>
 </html>
