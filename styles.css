@@ -1,5 +1,6 @@
 body {
   margin: 0 auto;
+  max-width: 50rem;
   padding: 15px;
   font-size: calc(1.25rem + 0.5vw);
   text-align: center;
