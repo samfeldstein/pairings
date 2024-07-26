@@ -1,5 +1,11 @@
 // Get a specified number of random elements from an array
 export function getRandomElements(array, number) {
+  
+  // Not ideal, but at least the app doesn't break. Will work on it
+  if (number > array.length) {
+    number = array.length;
+  }
+  
   const randomElements = [];
 
   while (randomElements.length < number) {

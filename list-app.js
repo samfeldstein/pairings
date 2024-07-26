@@ -22,3 +22,7 @@ numberOfStudentsInput.addEventListener("keydown", (event) => {
 resetBtn.addEventListener("click", (event) => {
   saintsListEl.innerHTML = "";
 });
+
+// If a list has already been generated, clear that list before rendering the new one 
+
+// If the number entered is greater than the number of array elements, allow duplicates
