@@ -1,14 +1,18 @@
-const studentsList = document.querySelector("#students-list");
 const saintsList = document.querySelector("#saints-list");
-const updateStudentsBtn = document.querySelector("#update-students");
 const chooseBtn = document.querySelector("#choose");
 const numberOfStudentsInput = document.querySelector("#number-of-students");
 
-let numberOfStudents = 30;
+let numberOfStudents = 0;
 
-updateStudentsBtn.onclick = () => {
-  numberOfStudents = numberOfStudentsInput.value;
-};
+numberOfStudentsInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    numberOfStudents = numberOfStudentsInput.value;
+    const list = getRandomElements(saints, numberOfStudents);
+    for (let saint of list) {
+      saintsList.innerHTML += `<li>${saint}</li>`;
+    }
+  }
+});
 
 const saints = [
   "Joan of Arc",
@@ -43,6 +47,7 @@ const saints = [
   "Saint Stephen",
 ];
 
+// FUNCTIONS
 function getRandomElements(array, number) {
   const randomElements = [];
 
@@ -57,10 +62,3 @@ function getRandomElements(array, number) {
 
   return randomElements;
 }
-
-chooseBtn.onclick = () => {
-  const list = getRandomElements(saints, numberOfStudents);
-  for (let saint of list) {
-    saintsList.innerHTML += `<li>${saint}</li>`;
-  }
-};
