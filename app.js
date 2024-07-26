@@ -6,11 +6,18 @@ const saintsListEl = document.querySelector("#saints-list");
 const generateBtn = document.querySelector("#generate");
 const resetBtn = document.querySelector("#reset");
 const numberOfStudentsInput = document.querySelector("#number-of-students");
+const newSaintInput = document.getElementById("new-saint");
+const allSaintsList = document.getElementById("all-saints");
+const pairingsHeading = document.getElementById("pairings");
 
+// Generate Pairings
 generateBtn.onclick = () => {
   const randomSaints = getRandomElements(saints, numberOfStudentsInput.value);
 
+  pairingsHeading.classList.toggle("hidden");
   renderArrayAsList(randomSaints, saintsListEl);
+  generateBtn.disabled = true;
+  resetBtn.disabled = false;
 };
 
 numberOfStudentsInput.addEventListener("keydown", (event) => {
@@ -19,10 +26,26 @@ numberOfStudentsInput.addEventListener("keydown", (event) => {
   }
 });
 
+// Reset
 resetBtn.addEventListener("click", (event) => {
   saintsListEl.innerHTML = "";
+  pairingsHeading.classList.toggle("hidden");
+  generateBtn.disabled = false;
+  resetBtn.disabled = true;
 });
 
-// If a list has already been generated, clear that list before rendering the new one 
+// Add new saint
+newSaintInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    saints.push(newSaintInput.value);
+    newSaintInput.value = "";
+  }
+});
+
+console.log(saints);
+
+renderArrayAsList(saints.sort(), allSaintsList);
+
+// If a list has already been generated, clear that list before rendering the new one
 
 // If the number entered is greater than the number of array elements, allow duplicates
