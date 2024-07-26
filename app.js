@@ -34,15 +34,15 @@ resetBtn.addEventListener("click", (event) => {
   resetBtn.disabled = true;
 });
 
-// Add new saint
+// Add saint
 newSaintInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     saints.push(newSaintInput.value);
+    allSaintsList.innerHTML = "";
+    renderArrayAsList(saints.sort(), allSaintsList);
     newSaintInput.value = "";
   }
 });
-
-console.log(saints);
 
 renderArrayAsList(saints.sort(), allSaintsList);
 
