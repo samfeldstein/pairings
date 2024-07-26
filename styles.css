@@ -1,10 +1,19 @@
 body {
   margin: 0 auto;
-  max-width: 80rem;
-  font-size: calc(1.25rem + 0.5vw);
   padding: 15px;
+  font-size: calc(1.25rem + 0.5vw);
+  text-align: center;
 }
 
 h1 {
   margin-top: 0;
+}
+
+button {
+  font-size: calc(1rem + 0.5vw);
+  margin-top: 2rem;
+}
+
+ol {
+  text-align: left;
 }
