@@ -1,11 +1,10 @@
 // Get a specified number of random elements from an array
 export function getRandomElements(array, number) {
-  
-  // Not ideal, but at least the app doesn't break. Will work on it
+  // If number is higher than array, enters an infinite loop. This solution isn't ideal, but at least the app doesn't break. Will work on it.
   if (number > array.length) {
     number = array.length;
   }
-  
+
   const randomElements = [];
 
   while (randomElements.length < number) {
@@ -20,6 +19,7 @@ export function getRandomElements(array, number) {
   return randomElements;
 }
 
+// Render array as list
 export function renderArrayAsList(array, list) {
   for (let element of array) {
     list.innerHTML += `<li>${element}</li>`;

@@ -1,6 +1,7 @@
 import { getRandomElements } from "./functions.js";
 import { renderArrayAsList } from "./functions.js";
 
+// Lets can't be reassigned when imported
 let saints = [
   "Joan of Arc",
   "Thomas Aquinas",
@@ -75,6 +76,10 @@ resetBtn.addEventListener("click", (event) => {
 
 // Add saint
 addSaintBtn.addEventListener("click", (event) => {
+  if (!newSaintInput.value) {
+    return;
+  }
+  
   saints.push(newSaintInput.value);
   saints.sort(); // Sort the saints array alphabetically
   localStorage.setItem("saints", JSON.stringify(saints));
@@ -91,6 +96,9 @@ newSaintInput.addEventListener("keydown", (event) => {
 
 // Remove saint
 removeSaintBtn.addEventListener("click", (event) => {
+  if (!saintToRemove.value) {
+    return;
+  }
   removeSaint(saintToRemove.value);
 });
 

@@ -15,11 +15,13 @@ button {
   font-size: inherit;
   font-family: inherit;
   margin: 2rem 0;
+  padding: 1rem;
 }
 
 input {
   font-size: inherit;
   font-family: inherit;
+  padding: 1rem;
 }
 
 ol, ul {
