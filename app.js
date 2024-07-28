@@ -42,6 +42,8 @@ const newSaintInput = document.getElementById("new-saint");
 const allSaintsList = document.getElementById("all-saints");
 const pairingsHeading = document.getElementById("pairings");
 const localSaints = JSON.parse(localStorage.getItem("saints"));
+const removeSaintBtn = document.getElementById("remove-saint");
+const saintToRemove = document.getElementById("saint-to-remove");
 
 // Generate random saints list
 generateBtn.onclick = () => {
@@ -82,12 +84,30 @@ newSaintInput.addEventListener("keydown", (event) => {
   }
 });
 
+// Remove saint
+removeSaintBtn.addEventListener("click", (event) => {
+  removeSaint(saintToRemove.value);
+});
+
+saintToRemove.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    removeSaintBtn.click();
+  }
+});
+
+function removeSaint(saint) {
+  const index = saints.indexOf(saint);
+  saints.splice(index, 1);
+  localStorage.setItem("saints", JSON.stringify(saints));
+  allSaintsList.innerHTML = "";
+  renderArrayAsList(saints, allSaintsList); // Render the sorted saints array
+  saintToRemove.value = "";
+}
+
 if (localSaints) {
   saints = localSaints;
 }
 
-renderArrayAsList(saints, allSaintsList);
+renderArrayAsList(saints.sort(), allSaintsList);
 
 // If the number entered is greater than the number of array elements, allow duplicates
-
-// Allow deleting saints
