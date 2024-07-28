@@ -44,6 +44,7 @@ const pairingsHeading = document.getElementById("pairings");
 const localSaints = JSON.parse(localStorage.getItem("saints"));
 const removeSaintBtn = document.getElementById("remove-saint");
 const saintToRemove = document.getElementById("saint-to-remove");
+const addSaintBtn = document.getElementById("add-saint");
 
 // Generate random saints list
 generateBtn.onclick = () => {
@@ -73,14 +74,18 @@ resetBtn.addEventListener("click", (event) => {
 });
 
 // Add saint
+addSaintBtn.addEventListener("click", (event) => {
+  saints.push(newSaintInput.value);
+  saints.sort(); // Sort the saints array alphabetically
+  localStorage.setItem("saints", JSON.stringify(saints));
+  allSaintsList.innerHTML = "";
+  renderArrayAsList(saints, allSaintsList); // Render the sorted saints array
+  newSaintInput.value = "";
+});
+
 newSaintInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
-    saints.push(newSaintInput.value);
-    saints.sort(); // Sort the saints array alphabetically
-    localStorage.setItem("saints", JSON.stringify(saints));
-    allSaintsList.innerHTML = "";
-    renderArrayAsList(saints, allSaintsList); // Render the sorted saints array
-    newSaintInput.value = "";
+    addSaintBtn.click();
   }
 });
 

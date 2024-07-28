@@ -12,8 +12,14 @@ h1 {
 }
 
 button {
-  font-size: calc(1rem + 0.5vw);
-  margin-top: 2rem;
+  font-size: inherit;
+  font-family: inherit;
+  margin: 2rem 0;
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
 }
 
 ol, ul {
