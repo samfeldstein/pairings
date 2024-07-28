@@ -1,6 +1,7 @@
 body {
+  min-height: 100vh;
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 30rem;
   padding: 15px;
   font-size: calc(1.25rem + 0.3vw);
   font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
@@ -10,11 +11,18 @@ body {
   text-align: center;
 }
 
+section {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 h1 {
   margin-top: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-variant: small-caps;
 }
 
@@ -30,7 +38,8 @@ input {
   padding: 1rem;
 }
 
-ul, ol {
+ul,
+ol {
   text-align: left;
 }
 
@@ -40,4 +49,8 @@ ul {
 
 .hidden {
   display: none;
+}
+
+#generator {
+  margin-bottom: 4rem;
 }

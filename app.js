@@ -46,12 +46,17 @@ const localSaints = JSON.parse(localStorage.getItem("saints"));
 const removeSaintBtn = document.getElementById("remove-saint");
 const saintToRemove = document.getElementById("saint-to-remove");
 const addSaintBtn = document.getElementById("add-saint");
-const allSaintsBtn = document.getElementById("all-saints-btn")
-const allSaintsSection = document.getElementById("all-saints")
+const allSaintsBtn = document.getElementById("all-saints-btn");
+const allSaintsSection = document.getElementById("all-saints");
 
-allSaintsBtn.addEventListener("click", event => {
-allSaintsSection.classList.toggle("hidden")
-})
+allSaintsBtn.addEventListener("click", (event) => {
+  allSaintsSection.classList.toggle("hidden");
+  if (allSaintsBtn.textContent === "Show All Saints") {
+    allSaintsBtn.textContent = "Hide All Saints";
+  } else {
+    allSaintsBtn.textContent = "Show All Saints";
+  }
+});
 
 // Generate random saints list
 generateBtn.onclick = () => {
