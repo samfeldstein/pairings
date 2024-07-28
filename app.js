@@ -40,12 +40,18 @@ const generateBtn = document.querySelector("#generate");
 const resetBtn = document.querySelector("#reset");
 const numberOfStudentsInput = document.querySelector("#number-of-students");
 const newSaintInput = document.getElementById("new-saint");
-const allSaintsList = document.getElementById("all-saints");
+const allSaintsList = document.getElementById("all-saints-list");
 const pairingsHeading = document.getElementById("pairings");
 const localSaints = JSON.parse(localStorage.getItem("saints"));
 const removeSaintBtn = document.getElementById("remove-saint");
 const saintToRemove = document.getElementById("saint-to-remove");
 const addSaintBtn = document.getElementById("add-saint");
+const allSaintsBtn = document.getElementById("all-saints-btn")
+const allSaintsSection = document.getElementById("all-saints")
+
+allSaintsBtn.addEventListener("click", event => {
+allSaintsSection.classList.toggle("hidden")
+})
 
 // Generate random saints list
 generateBtn.onclick = () => {

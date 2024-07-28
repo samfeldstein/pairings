@@ -23,29 +23,33 @@
 
     <br />
     <button id="generate">Generate Pairings</button>
-    <br>
+    <br />
     <button id="reset" disabled>Reset</button>
     <h2 class="hidden" id="pairings">Pairings</h2>
     <ol id="saints-list"></ol>
 
-    <h2>All Saints</h2>
-    <input
-      type="text"
-      id="new-saint"
-      placeholder="Saint to add"
-      aria-label="Saint to add"
-    />
-    <br />
-    <button id="add-saint">Add Saint</button>
-    <br />
-    <input
-      type="text"
-      id="saint-to-remove"
-      placeholder="Saint to remove"
-      aria-label="Saint to remove"
-    />
-    <br />
-    <button id="remove-saint">Remove Saint</button>
-    <ul id="all-saints"></ul>
+    <button id="all-saints-btn">See All Saints</button>
+
+    <section id="all-saints" class="hidden">
+      <h2>All Saints</h2>
+      <input
+        type="text"
+        id="new-saint"
+        placeholder="Saint to add"
+        aria-label="Saint to add"
+      />
+      <br />
+      <button id="add-saint">Add Saint</button>
+      <br />
+      <input
+        type="text"
+        id="saint-to-remove"
+        placeholder="Saint to remove"
+        aria-label="Saint to remove"
+      />
+      <br />
+      <button id="remove-saint">Remove Saint</button>
+      <ul id="all-saints-list"></ul>
+    </section>
   </body>
 </html>
