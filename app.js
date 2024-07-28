@@ -51,6 +51,8 @@ generateBtn.onclick = () => {
   renderArrayAsList(randomSaints, saintsListEl);
   generateBtn.disabled = true;
   resetBtn.disabled = false;
+  numberOfStudentsInput.value = "";
+  numberOfStudentsInput.disabled = true;
 };
 
 numberOfStudentsInput.addEventListener("keydown", (event) => {
@@ -65,6 +67,7 @@ resetBtn.addEventListener("click", (event) => {
   pairingsHeading.classList.toggle("hidden");
   generateBtn.disabled = false;
   resetBtn.disabled = true;
+  numberOfStudentsInput.disabled = false;
 });
 
 // Add saint
