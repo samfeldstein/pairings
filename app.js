@@ -49,6 +49,10 @@ const addSaintBtn = document.getElementById("add-saint");
 
 // Generate random saints list
 generateBtn.onclick = () => {
+  if (!numberOfStudentsInput.value) {
+    return;
+  }
+
   const randomSaints = getRandomElements(saints, numberOfStudentsInput.value);
 
   pairingsHeading.classList.toggle("hidden");
@@ -79,7 +83,7 @@ addSaintBtn.addEventListener("click", (event) => {
   if (!newSaintInput.value) {
     return;
   }
-  
+
   saints.push(newSaintInput.value);
   saints.sort(); // Sort the saints array alphabetically
   localStorage.setItem("saints", JSON.stringify(saints));

@@ -2,19 +2,25 @@ body {
   margin: 0 auto;
   max-width: 50rem;
   padding: 15px;
-  font-size: calc(1.25rem + 0.5vw);
+  font-size: calc(1.25rem + 0.3vw);
+  font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
+    serif;
+  display: flex;
+  flex-direction: column;
   text-align: center;
 }
 
 h1 {
   margin-top: 0;
-  font-family: fantasy;
+}
+
+h1, h2 {
+  font-variant: small-caps;
 }
 
 button {
   font-size: inherit;
   font-family: inherit;
-  margin: 2rem 0;
   padding: 1rem;
 }
 
@@ -24,8 +30,12 @@ input {
   padding: 1rem;
 }
 
-ol, ul {
+ul, ol {
   text-align: left;
+}
+
+ul {
+  list-style: none;
 }
 
 .hidden {
