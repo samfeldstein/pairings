@@ -7,6 +7,8 @@
 
 html {
   height: 100%;
+  /* Force scrollbar */
+  overflow-y: scroll;
   scroll-behavior: smooth;
   scroll-padding-top: 2rem;
 }

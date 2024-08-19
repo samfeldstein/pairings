@@ -9,13 +9,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <script type="module" src="/app.js" async></script>
-    <link rel="stylesheet" href="styles.css" />
+    <script src="/components/createListBtn.js"></script>
+    <script src="/components/Greeting.js"></script>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
 
   <body>
     <main>
+      <h1>Pairings Generator</h1>
+      <button is="create-list-btn">Create List</button>
       <section id="generator">
-        <h1>Pairings Generator</h1>
         <input
           type="number"
           id="number-of-students"
