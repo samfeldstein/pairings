@@ -6,21 +6,14 @@ class CreateListBtn extends HTMLButtonElement {
     this.addEventListener("click", this.handleClick);
   }
 
-  // Method to handle the click event
   handleClick() {
-    console.log("Button clicked! Creating a list...");
-
-    // Example: Dynamically create a list and append it to the body
-    const ul = document.createElement("ul");
-    ul.innerHTML = `
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    `;
-    document.body.appendChild(ul);
+    const newListName = document.getElementById("new-list-name");
+    this.classList.toggle("hidden");
+    newListName.classList.toggle("hidden");
+    newListName.focus();
   }
 
-  // Optional: Cleanup event listeners if needed
+  // Optional: Clean up event listeners if needed
   disconnectedCallback() {
     this.removeEventListener("click", this.handleClick);
   }

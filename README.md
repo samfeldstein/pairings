@@ -12,6 +12,9 @@ Some potential use cases:
 ## Roadmap
 
 - Make your own lists
+  - Enter a list name.
+  - Add items.
+  - The list will be sorted alphabetically, according the first list selected.
 - Pair any list with any other list
 - Add generation animation. Since this is for students, the more fun the better.
 - Replace text field with delete buttons.

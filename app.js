@@ -1,7 +1,5 @@
 import { getRandomElements, renderArrayAsList } from "./functions.js";
 
-import { CreateListBtn } from "./components/CreateListBtn.js";
-
 // Lets can't be reassigned when imported
 let saints = [
   "Joan of Arc",
@@ -139,6 +137,3 @@ if (localSaints) {
 }
 
 renderArrayAsList(saints.sort(), allSaintsList);
-
-// Define the custom button element, specifying it extends 'button'
-customElements.define("create-list-btn", CreateListBtn, { extends: "button" });
