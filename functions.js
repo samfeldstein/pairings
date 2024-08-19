@@ -1,6 +1,6 @@
 // Get a specified number of random elements from an array
 export function getRandomElements(array, number) {
-  // If number is higher than array, enters an infinite loop. This solution isn't ideal, but at least the app doesn't break. Will work on it.
+  // If number is higher than array, enters an infinite loop. This solution isn't ideal, but at least the app doesn't break.
   if (number > array.length) {
     number = array.length;
   }

@@ -35,6 +35,7 @@ let saints = [
   "Saint Stephen",
 ];
 
+// Constants
 const saintsListEl = document.querySelector("#saints-list");
 const generateBtn = document.querySelector("#generate");
 const resetBtn = document.querySelector("#reset");
