@@ -48,6 +48,7 @@ const saintToRemove = document.getElementById("saint-to-remove");
 const addSaintBtn = document.getElementById("add-saint");
 const allSaintsBtn = document.getElementById("all-saints-btn");
 const allSaintsSection = document.getElementById("all-saints");
+const newListNameInput = document.getElementById("new-list-name");
 
 allSaintsBtn.addEventListener("click", (event) => {
   allSaintsSection.classList.toggle("hidden");
@@ -137,3 +138,15 @@ if (localSaints) {
 }
 
 renderArrayAsList(saints.sort(), allSaintsList);
+
+const newListItemInput = document.getElementById("new-list-item-input");
+
+const newList = document.getElementById("new-list");
+
+newListItemInput.addEventListener("keydown", function (event) {
+  if (event.key === "Enter" && newListItemInput.value.trim() !== "") {
+    const newListItem = document.createElement("li");
+    newListItem.textContent = newListItemInput.value;
+    newList.appendChild(newListItem);
+  }
+});

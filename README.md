@@ -19,3 +19,4 @@ Some potential use cases:
 - Add generation animation. Since this is for students, the more fun the better.
 - Replace text field with delete buttons.
 - If the number entered is greater than the number of array elements, allow duplicates
+- Reset create list button on unfocus

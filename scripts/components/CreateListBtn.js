@@ -11,11 +11,7 @@ class CreateListBtn extends HTMLButtonElement {
     this.classList.toggle("hidden");
     newListName.classList.toggle("hidden");
     newListName.focus();
-  }
-
-  // Optional: Clean up event listeners if needed
-  disconnectedCallback() {
-    this.removeEventListener("click", this.handleClick);
+    // Also create a NewList component
   }
 }
 
