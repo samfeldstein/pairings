@@ -1,14 +1,23 @@
+// Get element by id
+export function getById(...ids) {
+  return ids.map((id) => document.getElementById(id));
+}
+
 // Hide element
-export function hide(element) {
-  if (!element.classList.contains("hidden")) {
-    element.classList.add("hidden");
+export function hide(...elements) {
+  for (let element of elements) {
+    if (!element.classList.contains("hidden")) {
+      element.classList.add("hidden");
+    }
   }
 }
 
 // Show element
-export function show(element) {
-  if (element.classList.contains("hidden")) {
-    element.classList.remove("hidden");
+export function show(...elements) {
+  for (let element of elements) {
+    if (element.classList.contains("hidden")) {
+      element.classList.remove("hidden");
+    }
   }
 }
 

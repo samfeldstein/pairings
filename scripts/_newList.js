@@ -1,11 +1,22 @@
-import { hide, show } from "./_functions.js";
+import { getById, hide, show } from "./_functions.js";
+
+const [
+  createListBtn,
+  form,
+  formListContainer,
+  nameInput,
+  listNameEl,
+  newListContainer,
+] = getById(
+  "create-list-btn",
+  "new-list-form",
+  "form-list-container",
+  "new-list-name-input",
+  "new-list-name",
+  "new-list-container"
+);
 
 // Create new list
-const createListBtn = document.getElementById("create-list-btn");
-const form = document.getElementById("new-list-form");
-const formListContainer = document.getElementById("form-list-container");
-const nameInput = document.getElementById("new-list-name-input");
-
 createListBtn.onclick = function (event) {
   hide(this);
   show(form);
@@ -14,9 +25,6 @@ createListBtn.onclick = function (event) {
 };
 
 // Add new list name
-const listNameEl = document.getElementById("new-list-name");
-const newListContainer = document.getElementById("new-list-container");
-
 nameInput.onkeydown = function (event) {
   const itemInput = document.getElementById("new-list-item");
 
@@ -63,18 +71,21 @@ const saveButton = document.getElementById("save-new-list");
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
   localStorage.setItem(`${listNameEl.textContent}`, JSON.stringify(listArray));
+  console.log("STORED LISTS");
+  console.log(localStorage);
 
   const children = newListContainer.querySelectorAll("*");
   for (const child of children) {
     child.textContent = "";
   }
 
-  hide(form);
+  form.reset();
+  hide(form, itemInput, saveButton);
+  // hide(saveButton)
   show(createListBtn);
 
   formListContainer.classList.toggle("hidden");
   itemInput.classList.toggle("hidden");
-  saveButton.classList.toggle("hidden");
 
   // Show create list button
 
