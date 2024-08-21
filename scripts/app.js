@@ -1,4 +1,5 @@
-import { getRandomElements, renderArrayAsList } from "./functions.js";
+import "./_newList.js";
+import { getRandomElements, renderArrayAsList } from "./_functions.js";
 
 // Lets can't be reassigned when imported
 let saints = [
@@ -48,7 +49,6 @@ const saintToRemove = document.getElementById("saint-to-remove");
 const addSaintBtn = document.getElementById("add-saint");
 const allSaintsBtn = document.getElementById("all-saints-btn");
 const allSaintsSection = document.getElementById("all-saints");
-const newListNameInput = document.getElementById("new-list-name");
 
 allSaintsBtn.addEventListener("click", (event) => {
   allSaintsSection.classList.toggle("hidden");

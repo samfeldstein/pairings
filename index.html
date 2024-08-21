@@ -3,16 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pairings Generator</title>
+    <title>Recombinator</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <script type="module" src="/scripts/app.js" async></script>
     <script src="/scripts/components/createListBtn.js"></script>
-    <script src="/scripts/components/NewListName.js"></script>
-    <script src="/scripts/newListItem.js" defer></script>
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
   </head>
 
   <body>
@@ -20,19 +18,22 @@
       <h1>Recombinator</h1>
       <section id="new-list-section">
         <button is="create-list-btn">Create New List</button>
-        <input
-          id="new-list-name"
-          is="new-list-name"
-          class="hidden"
-          type="text"
-          placeholder="New list name"
-        />
-        <input
-          id="new-list-item"
-          class="hidden"
-          type="text"
-          placeholder="Add new list item"
-        />
+        <form action="">
+          <input
+            id="new-list-name"
+            is="new-list-name"
+            class="hidden"
+            type="text"
+            placeholder="New list name"
+          />
+          <input
+            id="new-list-item"
+            class="hidden"
+            type="text"
+            placeholder="Add new list item"
+          />
+          <button id="save-new-list" type="submit">Save</button>
+        </form>
         <div id="new-list-container" class="hidden">
           <ul id="new-list"></ul>
         </div>
