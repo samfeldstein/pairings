@@ -8,21 +8,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <script type="module" src="/scripts/app.js" async></script>
-    <script src="/scripts/components/createListBtn.js"></script>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/styles/main.css" />
+
+    <!-- Scripts -->
+    <script type="module" src="/scripts/app.js" async></script>
   </head>
 
   <body>
     <main>
       <h1>Recombinator</h1>
       <section id="new-list-section">
-        <button is="create-list-btn">Create New List</button>
-        <form action="">
+        <button id="create-list-btn">Create New List</button>
+        <form id="new-list-form" class="hidden" action="">
           <input
-            id="new-list-name"
-            is="new-list-name"
-            class="hidden"
+            id="new-list-name-input"
             type="text"
             placeholder="New list name"
           />
@@ -35,6 +36,7 @@
           <button id="save-new-list" type="submit">Save</button>
         </form>
         <div id="new-list-container" class="hidden">
+          <div id="new-list-name" class="list-title"></div>
           <ul id="new-list"></ul>
         </div>
       </section>
