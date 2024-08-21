@@ -17,9 +17,10 @@
   </head>
 
   <body>
+    <h1>Recombinator</h1>
     <main>
-      <h1>Recombinator</h1>
       <section id="new-list-section">
+        <h2>Create New Lists</h2>
         <button id="create-list-btn">Create New List</button>
         <form id="new-list-form" class="hidden" action="">
           <input
@@ -33,14 +34,17 @@
             type="text"
             placeholder="Add new list item"
           />
-          <button id="save-new-list" type="submit">Save</button>
+
+          <section id="new-list-container" class="hidden">
+            <h3 id="new-list-name" class="list-title"></h3>
+            <ul id="new-list"></ul>
+          </section>
+
+          <button id="save-new-list" class="hidden" type="submit">Save</button>
         </form>
-        <div id="new-list-container" class="hidden">
-          <div id="new-list-name" class="list-title"></div>
-          <ul id="new-list"></ul>
-        </div>
       </section>
       <section id="generator">
+        <h2>Generator</h2>
         <input
           type="number"
           id="number-of-students"
@@ -54,7 +58,7 @@
       </section>
       <button id="all-saints-btn">Show All Saints</button>
       <section id="all-saints" class="hidden">
-        <h2>All Saints</h2>
+        <h2>Lists</h2>
         <input
           type="text"
           id="new-saint"

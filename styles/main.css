@@ -12,28 +12,15 @@ body {
 
 main {
   display: grid;
-  gap: 3rem;
+  gap: 4rem;
 }
 
-section {
-  display: grid;
-  gap: 1rem;
-}
-
-h1 {
-  margin: 0;
-  font-size: calc(1.25rem + 1vw);
-}
-
-h1,
-h2 {
-  font-variant: small-caps;
-}
-
-button {
+button, input {
   font-size: inherit;
   font-family: inherit;
   padding: 1rem;
+  display: block;
+  width: 100%;
 }
 
 input {
@@ -56,12 +43,15 @@ footer p {
   margin-bottom: 0;
 }
 
-.list-title {
-  font-size: 2rem;
-  font-variant: small-caps;
+#form-list-container {
+  gap: 1rem;
 }
 
 /* Utilities */
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }

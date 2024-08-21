@@ -1,3 +1,17 @@
+// Hide element
+export function hide(element) {
+  if (!element.classList.contains("hidden")) {
+    element.classList.add("hidden");
+  }
+}
+
+// Show element
+export function show(element) {
+  if (element.classList.contains("hidden")) {
+    element.classList.remove("hidden");
+  }
+}
+
 // Get a specified number of random elements from an array
 export function getRandomElements(array, number) {
   // If number is higher than array, enters an infinite loop. This solution isn't ideal, but at least the app doesn't break.

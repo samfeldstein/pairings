@@ -1,16 +1,19 @@
+import { hide, show } from "./_functions.js";
+
 // Create new list
 const createListBtn = document.getElementById("create-list-btn");
 const form = document.getElementById("new-list-form");
+const formListContainer = document.getElementById("form-list-container");
+const nameInput = document.getElementById("new-list-name-input");
 
 createListBtn.onclick = function (event) {
-  form.classList.toggle("hidden");
-  const newListName = document.getElementById("new-list-name-input");
-  this.classList.toggle("hidden");
-  newListName.focus();
+  hide(this);
+  show(form);
+  show(nameInput);
+  nameInput.focus();
 };
 
 // Add new list name
-const nameInput = document.getElementById("new-list-name-input");
 const listNameEl = document.getElementById("new-list-name");
 const newListContainer = document.getElementById("new-list-container");
 
@@ -18,14 +21,14 @@ nameInput.onkeydown = function (event) {
   const itemInput = document.getElementById("new-list-item");
 
   if (event.key === "Enter" && nameInput.value.trim() !== "") {
-    // If this isn't here, the code in the save button runs on "Enter."
+    // If we don't prevent default, the code in the save button (submit action) runs on "Enter."
     event.preventDefault();
     listNameEl.textContent = nameInput.value.trim();
-    nameInput.value = "";
-    newListContainer.classList.toggle("hidden");
-    nameInput.classList.toggle("hidden");
-    itemInput.classList.toggle("hidden");
+
+    show(itemInput);
     itemInput.focus();
+
+    show(newListContainer);
   }
 };
 
@@ -47,6 +50,10 @@ itemInput.onkeydown = function (event) {
     console.log(listArray);
 
     itemInput.value = "";
+
+    if (saveButton.classList.contains("hidden")) {
+      saveButton.classList.toggle("hidden");
+    }
   }
 };
 
@@ -55,16 +62,27 @@ const saveButton = document.getElementById("save-new-list");
 
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
-
-  // Save new list array to local storage
-  // Seems to be saving before I click. Possibly need to prevent the form's default behavior?
-  // *Update: I tried prevent form's default submit behavior, and no dice. I also tried prevent the input's submit behavior.
   localStorage.setItem(`${listNameEl.textContent}`, JSON.stringify(listArray));
-  console.log("Is this thing on?");
 
-  // Move to lists section
+  const children = newListContainer.querySelectorAll("*");
+  for (const child of children) {
+    child.textContent = "";
+  }
+
+  hide(form);
+  show(createListBtn);
+
+  formListContainer.classList.toggle("hidden");
+  itemInput.classList.toggle("hidden");
+  saveButton.classList.toggle("hidden");
+
+  // Show create list button
+
+  // Move to lists section - I don't think this can be done from here? Or maybe it can. But probably not. I think the lists section logic needs to handle it. We can render all lists from local storage there.
   // Clear new list container
 };
 
 // Save to local storage
 // Clear new list container
+
+// Edit names? In case you mess up?
