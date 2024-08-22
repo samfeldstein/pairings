@@ -9,6 +9,7 @@ const [
   newListContainer,
   itemInput,
   listEl,
+  saveButton,
 ] = getById(
   "create-list-btn",
   "new-list-form",
@@ -17,7 +18,8 @@ const [
   "new-list-name",
   "new-list-container",
   "new-list-item",
-  "new-list"
+  "new-list",
+  "save-new-list"
 );
 
 // Create new list
@@ -29,42 +31,38 @@ createListBtn.onclick = function (event) {
 };
 
 // Add new list name
+nameInput.addEventListener("blur", function () {
+  hide(this);
+  show(createListBtn);
+});
+
 onEnter(nameInput, function () {
   listNameEl.textContent = nameInput.value.trim();
-
   show(itemInput);
   itemInput.focus();
-
   show(newListContainer);
 });
 
 // Add new list item
-
 const listArray = [];
 
-itemInput.onkeydown = function (event) {
-  if (event.key === "Enter" && itemInput.value.trim() !== "") {
-    // If this isn't here, the code in the save button runs on "Enter."
-    event.preventDefault();
-    const item = document.createElement("li");
+onEnter(itemInput, function () {
+  const item = document.createElement("li");
 
-    item.textContent = itemInput.value.trim();
-    listEl.appendChild(item);
-    listArray.push(item.textContent);
-    console.log("LIST ARRAY");
-    console.log(listArray);
+  item.textContent = itemInput.value.trim();
+  listEl.appendChild(item);
+  listArray.push(item.textContent);
+  console.log("LIST ARRAY");
+  console.log(listArray);
 
-    itemInput.value = "";
+  itemInput.value = "";
 
-    if (saveButton.classList.contains("hidden")) {
-      saveButton.classList.toggle("hidden");
-    }
+  if (saveButton.classList.contains("hidden")) {
+    saveButton.classList.toggle("hidden");
   }
-};
+});
 
 // Save new list
-const saveButton = document.getElementById("save-new-list");
-
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
   localStorage.setItem(`${listNameEl.textContent}`, JSON.stringify(listArray));
@@ -77,20 +75,8 @@ saveButton.onclick = function (event) {
   }
 
   form.reset();
-  hide(form, itemInput, saveButton);
-  // hide(saveButton)
+  hide(form, itemInput, this);
   show(createListBtn);
-
-  formListContainer.classList.toggle("hidden");
-  itemInput.classList.toggle("hidden");
-
-  // Show create list button
-
-  // Move to lists section - I don't think this can be done from here? Or maybe it can. But probably not. I think the lists section logic needs to handle it. We can render all lists from local storage there.
-  // Clear new list container
 };
-
-// Save to local storage
-// Clear new list container
 
 // Edit names? In case you mess up?
