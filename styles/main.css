@@ -15,20 +15,6 @@ main {
   gap: 4rem;
 }
 
-button, input {
-  font-size: inherit;
-  font-family: inherit;
-  padding: 1rem;
-  display: block;
-  width: 100%;
-}
-
-input {
-  font-size: inherit;
-  font-family: inherit;
-  padding: 1rem;
-}
-
 ul,
 ol {
   text-align: left;

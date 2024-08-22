@@ -32,48 +32,73 @@ createListBtn.onclick = function (event) {
 
 // Add new list name
 nameInput.addEventListener("blur", function () {
-  hide(this);
-  show(createListBtn);
+  if (itemInput.classList.contains("hidden")) {
+    hide(this);
+    show(createListBtn);
+  }
 });
 
 onEnter(nameInput, function () {
-  listNameEl.textContent = nameInput.value.trim();
+  listNameEl.textContent = nameInput.value.trim(); // Use this instead of nameInput?
   show(itemInput);
   itemInput.focus();
   show(newListContainer);
 });
 
-// Add new list item
-const listArray = [];
-
 onEnter(itemInput, function () {
-  const item = document.createElement("li");
+  const itemEl = document.createElement("li");
+  const item = document.createElement("div");
+  const deleteBtn = document.createElement("button");
+
+  Object.assign(deleteBtn, {
+    classList: ["delete-item"],
+    type: "button",
+    textContent: "Delete",
+  });
+
+  deleteBtn.onclick = function () {
+    itemEl.remove();
+  };
 
   item.textContent = itemInput.value.trim();
-  listEl.appendChild(item);
-  listArray.push(item.textContent);
-  console.log("LIST ARRAY");
-  console.log(listArray);
+  itemEl.appendChild(item);
+  itemEl.appendChild(deleteBtn);
+
+  // Render the list item
+  listEl.appendChild(itemEl);
+  // listArray.push(itemInput.value);
+  // console.log("LIST ARRAY");
+  // console.log(listArray);
 
   itemInput.value = "";
 
-  if (saveButton.classList.contains("hidden")) {
-    saveButton.classList.toggle("hidden");
-  }
+  show(saveButton);
 });
 
 // Save new list
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
+
+  // Turn list items into an array
+  const childDivs = listEl.querySelectorAll("div");
+  const divsArray = [...childDivs];
+  const listArray = divsArray.map((div) => div.textContent);
+
+  console.log("LIST");
+  console.log(listArray);
+
+  // Store the array
   localStorage.setItem(`${listNameEl.textContent}`, JSON.stringify(listArray));
   console.log("STORED LISTS");
   console.log(localStorage);
 
+  // Clear the list container
   const children = newListContainer.querySelectorAll("*");
   for (const child of children) {
     child.textContent = "";
   }
 
+  // Rest everything
   form.reset();
   hide(form, itemInput, this);
   show(createListBtn);
