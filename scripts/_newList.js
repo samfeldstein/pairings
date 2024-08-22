@@ -1,4 +1,4 @@
-import { getById, hide, show } from "./_functions.js";
+import { getById, onEnter, hide, show } from "./_functions.js";
 
 const [
   createListBtn,
@@ -7,13 +7,17 @@ const [
   nameInput,
   listNameEl,
   newListContainer,
+  itemInput,
+  listEl,
 ] = getById(
   "create-list-btn",
   "new-list-form",
   "form-list-container",
   "new-list-name-input",
   "new-list-name",
-  "new-list-container"
+  "new-list-container",
+  "new-list-item",
+  "new-list"
 );
 
 // Create new list
@@ -25,24 +29,17 @@ createListBtn.onclick = function (event) {
 };
 
 // Add new list name
-nameInput.onkeydown = function (event) {
-  const itemInput = document.getElementById("new-list-item");
+onEnter(nameInput, function () {
+  listNameEl.textContent = nameInput.value.trim();
 
-  if (event.key === "Enter" && nameInput.value.trim() !== "") {
-    // If we don't prevent default, the code in the save button (submit action) runs on "Enter."
-    event.preventDefault();
-    listNameEl.textContent = nameInput.value.trim();
+  show(itemInput);
+  itemInput.focus();
 
-    show(itemInput);
-    itemInput.focus();
-
-    show(newListContainer);
-  }
-};
+  show(newListContainer);
+});
 
 // Add new list item
-const itemInput = document.getElementById("new-list-item");
-const listEl = document.getElementById("new-list");
+
 const listArray = [];
 
 itemInput.onkeydown = function (event) {

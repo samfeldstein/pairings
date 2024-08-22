@@ -3,6 +3,16 @@ export function getById(...ids) {
   return ids.map((id) => document.getElementById(id));
 }
 
+// On enter (for inputs)
+export function onEnter(element, callback) {
+  element.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && element.value.trim() !== "") {
+      event.preventDefault();
+      callback(event);
+    }
+  });
+}
+
 // Hide element
 export function hide(...elements) {
   for (let element of elements) {
