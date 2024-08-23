@@ -1,4 +1,5 @@
 import { getById, onEnter, hide, show } from "./_functions.js";
+import { allLists } from "./_allLists.js";
 
 const [
   createListBtn,
@@ -84,13 +85,11 @@ saveButton.onclick = function (event) {
   const divsArray = [...childDivs];
   const listArray = divsArray.map((div) => div.textContent);
 
-  console.log("LIST");
+  console.log("NEW LIST");
   console.log(listArray);
 
-  // Store the array
-  localStorage.setItem(`${listNameEl.textContent}`, JSON.stringify(listArray));
-  console.log("STORED LISTS");
-  console.log(localStorage);
+  // Add list to allLists
+  createListObject(`${listNameEl.textContent}`, listArray);
 
   // Clear the list container
   const children = newListContainer.querySelectorAll("*");
@@ -104,4 +103,13 @@ saveButton.onclick = function (event) {
   show(createListBtn);
 };
 
-// Edit names? In case you mess up?
+// Functions
+function createListObject(name, list) {
+  allLists.push({ name: name, list: list });
+  console.log("ALL LISTS");
+  console.log(allLists);
+
+  localStorage.setItem("All Lists", JSON.stringify(allLists));
+  console.log("STORED LISTS");
+  console.log(localStorage);
+}

@@ -2,7 +2,7 @@
 
 **Left off:**
 
-
+Render all lists in a list section. Probably in details elements, to save space.
 
 ## Refactor
 

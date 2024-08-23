@@ -1,4 +1,5 @@
 import "./_newList.js";
+import "./_allLists.js";
 import { getRandomElements, renderArrayAsList } from "./_functions.js";
 
 // Lets can't be reassigned when imported
