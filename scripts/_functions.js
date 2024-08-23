@@ -51,13 +51,3 @@ export function getRandomElements(array, number) {
 
   return randomElements;
 }
-
-// Render array as list
-// Right now, this builds all lists at load. There's probably a better way.
-export function renderArrayAsList(array, list) {
-  console.log(array);
-
-  for (let element of array) {
-    list.innerHTML += `<li>${element}</li>`;
-  }
-}

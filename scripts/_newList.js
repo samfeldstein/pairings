@@ -1,4 +1,5 @@
 import { getById, onEnter, hide, show } from "./_functions.js";
+import { renderAllLists } from "./_allLists.js";
 import { allLists } from "./_allLists.js";
 
 const [
@@ -101,6 +102,10 @@ saveButton.onclick = function (event) {
   form.reset();
   hide(form, itemInput, this);
   show(createListBtn);
+
+  // Render all lists
+  // There's probably a way to += this? Which would be way more efficient
+  renderAllLists();
 };
 
 // Functions
