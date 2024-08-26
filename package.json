@@ -1,0 +1,16 @@
+{
+  "name": "pairings",
+  "version": "1.0.0",
+  "description": "A tool to generate random pairs between lists.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sam Feldstein",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0"
+  }
+}

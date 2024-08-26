@@ -15,16 +15,32 @@ export function renderAllLists() {
   for (let list of allLists) {
     const detailsEl = document.createElement("details");
     const summary = document.createElement("summary");
+    const deleteBtn = document.createElement("button");
+
+    Object.assign(deleteBtn, {
+      classList: ["delete-item"],
+      type: "button",
+      textContent: "Delete",
+    });
+
     summary.textContent = list.name;
+    summary.appendChild(deleteBtn);
     detailsEl.appendChild(summary);
 
+    deleteBtn.onclick = function () {
+      detailsEl.remove();
+      // Remove from local storage
+      const index = allLists.findIndex((item) => item.name === list.name);
+      if (index !== -1) {
+        allLists.splice(index, 1);
+        localStorage.setItem("All Lists", JSON.stringify(allLists));
+      }
+      console.log(localStorage);
+    };
+
     const listEl = document.createElement("ul");
-    listEl.id = list.name.toLowerCase();
+    listEl.id = list.name.toLowerCase(); // Account for mutli-word names
 
-    const listName = document.createElement("h3");
-    listName.textContent = list.name;
-
-    listEl.appendChild(listName);
     detailsEl.appendChild(listEl);
 
     // Render stored arrays as lists

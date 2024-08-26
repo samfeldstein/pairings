@@ -5,7 +5,6 @@ import { allLists } from "./_allLists.js";
 const [
   createListBtn,
   form,
-  formListContainer,
   nameInput,
   listNameEl,
   newListContainer,
@@ -15,7 +14,6 @@ const [
 ] = getById(
   "create-list-btn",
   "new-list-form",
-  "form-list-container",
   "new-list-name-input",
   "new-list-name",
   "new-list-container",
@@ -25,7 +23,7 @@ const [
 );
 
 // Create new list
-createListBtn.onclick = function (event) {
+createListBtn.onclick = function () {
   hide(this);
   show(form);
   show(nameInput);

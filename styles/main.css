@@ -5,14 +5,6 @@ body {
   margin: 0 auto;
   padding: 1rem;
   font-size: 1.25rem;
-  font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
-    serif;
-  text-align: center;
-}
-
-main {
-  display: grid;
-  gap: 4rem;
 }
 
 section {
@@ -23,16 +15,6 @@ section {
 form {
   display: grid;
   gap: 1rem;
-}
-
-ul,
-ol {
-  text-align: left;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
 }
 
 footer {
