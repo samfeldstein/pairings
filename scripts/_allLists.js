@@ -4,15 +4,21 @@ import { getById, onEnter } from "./_functions.js";
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 
 // All lists section
-const [allListsSection] = getById("all-lists-section");
+const [allListsSection, listOfLists] = getById(
+  "all-lists-section",
+  "list-of-lists"
+);
 
 // Render all lists on page load
 renderAllLists();
 
 // Exported for use in _newList
-// Also, this is doing way too much work. Need to refactor 
-// Also, createDocumentFragment might be useful here 
+// Also, this is doing way too much work. Need to refactor
+// Also, createDocumentFragment might be useful here
 export function renderAllLists() {
+  // Prevent duplicates
+  listOfLists.innerHTML = "";
+
   for (let list of allLists) {
     const detailsEl = document.createElement("details");
     const summary = document.createElement("summary");
@@ -79,7 +85,7 @@ export function renderAllLists() {
       listItem.textContent = item;
       listEl.appendChild(listItem);
     }
-
-    allListsSection.appendChild(detailsEl);
+// Create fragment might be useful here 
+    listOfLists.appendChild(detailsEl);
   }
 }

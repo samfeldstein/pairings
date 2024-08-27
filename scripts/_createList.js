@@ -59,7 +59,7 @@ onEnter(itemInput, function () {
     itemEl.remove();
   };
 
-  // Add item text content, append it along and delete button to the li element
+  // Add item text content, append it and delete button to the li element
   itemText.textContent = itemInput.value;
   itemEl.appendChild(itemText);
   itemEl.appendChild(deleteBtn);
@@ -84,14 +84,25 @@ saveButton.onclick = function (event) {
   // Grab list item text and turn into an array
   const childDivs = listEl.querySelectorAll("div");
   const divsArray = [...childDivs];
-  const listArray = divsArray.map((div) => div.textContent);
+  const listItemStrings = divsArray.map((div) => div.textContent);
 
   console.log("NEW LIST");
-  console.log(listArray);
+  console.log(listItemStrings);
 
-  // Add list to allLists
-  // This could probably be split into two functions
-  createListObject(`${listNameEl.textContent}`, listArray);
+  // Turn the list into an object
+  const listObject = {
+    name: listNameEl.textContent,
+    list: listItemStrings,
+  };
+
+  // Add object to all list array
+  allLists.push(listObject);
+  console.log("ALL LISTS");
+  console.log(allLists);
+
+  // Stored all lists locally
+  localStorage.setItem("All Lists", JSON.stringify(allLists));
+  console.log(localStorage.getItem("All Lists"));
 
   // Clear the list container
   const children = newListContainer.querySelectorAll("*");
@@ -99,24 +110,11 @@ saveButton.onclick = function (event) {
     child.textContent = "";
   }
 
-  // Rest everything
+  // Reset the form
   form.reset();
   hide(form, itemInput, this);
   show(createListBtn);
 
-  // Render all lists
-  // There's probably a way to += this? Which would be way more efficient
+  // Render all lists 
   renderAllLists();
 };
-
-// Functions
-// Maybe should be split into two functions
-function createListObject(name, list) {
-  allLists.push({ name: name, list: list });
-  console.log("ALL LISTS");
-  console.log(allLists);
-
-  localStorage.setItem("All Lists", JSON.stringify(allLists));
-  console.log("STORED LISTS");
-  console.log(localStorage);
-}
