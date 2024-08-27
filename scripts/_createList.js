@@ -29,12 +29,13 @@ createListBtn.onclick = function () {
 };
 
 // If you unfocus the name input without hitting enter, hide the input and show the create button
-nameInput.onblur = function () {
-  if (itemInput.classList.contains("hidden")) {
-    hide(this);
-    show(createListBtn);
-  }
-};
+// As is, code run if you click the save button. We'd solved this earlier by hiding the save button until you enter a name or item, but that was proving challenging on its own.
+// nameInput.onblur = function () {
+//   if (itemInput.classList.contains("hidden")) {
+//     hide(form);
+//     show(createListBtn);
+//   }
+// };
 
 // Enter list name
 onEnter(nameInput, function () {
@@ -112,7 +113,7 @@ saveButton.onclick = function (event) {
 
   // Reset the form
   form.reset();
-  hide(form, itemInput, this);
+  hide(form, itemInput, newListContainer);
   show(createListBtn);
 
   // Render all lists 
