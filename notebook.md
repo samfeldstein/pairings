@@ -6,6 +6,9 @@
 - Edit lists (delete and add items)
 - Sort lists
 - Select lists to pair
+- Disable save button if there's nothing to save
+  - This has proven harder than it sounds, and since it's not all-important I'm going to move on for now.
+- Rendered listed are stacking on top of each other in the all lists section. The problem should be in the render list function.
 
 ## Fix
 

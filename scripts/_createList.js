@@ -1,6 +1,5 @@
-import { getById, onEnter, hide, show } from "./_functions.js";
-import { renderAllLists } from "./_allLists.js";
-import { allLists } from "./_allLists.js";
+import { getById, createElement, onEnter, hide, show } from "./_functions.js";
+import { allLists, renderAllLists } from "./_allLists.js";
 
 const [
   createListBtn,
@@ -22,34 +21,34 @@ const [
   "save-new-list"
 );
 
-// Create new list
+// Press the button to create a new list
 createListBtn.onclick = function () {
   hide(this);
-  show(form);
-  show(nameInput);
+  show(form, nameInput);
   nameInput.focus();
 };
 
-// Add new list name
-nameInput.addEventListener("blur", function () {
+// If you unfocus the name input without hitting enter, hide the input and show the create button
+nameInput.onblur = function () {
   if (itemInput.classList.contains("hidden")) {
     hide(this);
     show(createListBtn);
   }
-});
+};
 
+// Enter list name
 onEnter(nameInput, function () {
-  listNameEl.textContent = nameInput.value.trim(); // Use this instead of nameInput?
+  listNameEl.textContent = nameInput.value;
+  show(newListContainer);
   show(itemInput);
   itemInput.focus();
-  show(newListContainer);
 });
 
+// Enter list items
 onEnter(itemInput, function () {
-  const itemEl = document.createElement("li");
-  const item = document.createElement("div");
-  const deleteBtn = document.createElement("button");
+  const [itemEl, itemText, deleteBtn] = createElement("li", "div", "button");
 
+  // Delete button functions
   Object.assign(deleteBtn, {
     classList: ["delete-item"],
     type: "button",
@@ -60,26 +59,29 @@ onEnter(itemInput, function () {
     itemEl.remove();
   };
 
-  item.textContent = itemInput.value.trim();
-  itemEl.appendChild(item);
+  // Add item text content, append it along and delete button to the li element
+  itemText.textContent = itemInput.value;
+  itemEl.appendChild(itemText);
   itemEl.appendChild(deleteBtn);
 
-  // Render the list item
+  // Add li to ul
   listEl.appendChild(itemEl);
-  // listArray.push(itemInput.value);
-  // console.log("LIST ARRAY");
-  // console.log(listArray);
 
+  // Clear the input
   itemInput.value = "";
-
-  show(saveButton);
 });
 
 // Save new list
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
 
-  // Turn list items into an array
+  // Prevent adding empty lists
+  if (!listEl.innerHTML) {
+    alert("Error: List empty, nothing to save");
+    return;
+  }
+
+  // Grab list item text and turn into an array
   const childDivs = listEl.querySelectorAll("div");
   const divsArray = [...childDivs];
   const listArray = divsArray.map((div) => div.textContent);
@@ -88,6 +90,7 @@ saveButton.onclick = function (event) {
   console.log(listArray);
 
   // Add list to allLists
+  // This could probably be split into two functions
   createListObject(`${listNameEl.textContent}`, listArray);
 
   // Clear the list container
@@ -107,6 +110,7 @@ saveButton.onclick = function (event) {
 };
 
 // Functions
+// Maybe should be split into two functions
 function createListObject(name, list) {
   allLists.push({ name: name, list: list });
   console.log("ALL LISTS");

@@ -3,12 +3,23 @@ export function getById(...ids) {
   return ids.map((id) => document.getElementById(id));
 }
 
-// On enter (for inputs)
+export function createElement(...tags) {
+  return tags.map((tag) => document.createElement(tag));
+}
+
+// On enter, do something
 export function onEnter(element, callback) {
   element.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" && element.value.trim() !== "") {
+    // Prevent early form submission
+    if (event.key === "Enter") {
       event.preventDefault();
-      callback(event);
+
+      if (element.value.trim() !== "") {
+        // Trim the value (must reassign it)
+        element.value = element.value.trim();
+
+        callback(event);
+      }
     }
   });
 }

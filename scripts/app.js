@@ -1,4 +1,4 @@
-import "./_newList.js";
+import "./_createList.js";
 import "./_allLists.js";
 import { getRandomElements } from "./_functions.js";
 
