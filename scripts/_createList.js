@@ -101,7 +101,7 @@ saveButton.onclick = function (event) {
   console.log("ALL LISTS");
   console.log(allLists);
 
-  // Stored all lists locally
+  // Store all lists array locally
   localStorage.setItem("All Lists", JSON.stringify(allLists));
   console.log(localStorage.getItem("All Lists"));
 
@@ -116,6 +116,6 @@ saveButton.onclick = function (event) {
   hide(form, itemInput, newListContainer);
   show(createListBtn);
 
-  // Render all lists 
+  // Render all lists
   renderAllLists();
 };

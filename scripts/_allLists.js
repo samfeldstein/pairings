@@ -1,18 +1,14 @@
-import { getById, onEnter } from "./_functions.js";
+import { createElement, getById, onEnter } from "./_functions.js";
 
 // Assign All Lists. Check local storage first
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 
-// All lists section
-const [allListsSection, listOfLists] = getById(
-  "all-lists-section",
-  "list-of-lists"
-);
+// All lists ul
+const [listOfLists] = getById("list-of-lists");
 
 // Render all lists on page load
 renderAllLists();
 
-// Exported for use in _newList
 // Also, this is doing way too much work. Need to refactor
 // Also, createDocumentFragment might be useful here
 export function renderAllLists() {
@@ -20,35 +16,33 @@ export function renderAllLists() {
   listOfLists.innerHTML = "";
 
   for (let list of allLists) {
-    const detailsEl = document.createElement("details");
-    const summary = document.createElement("summary");
-    const editBtn = document.createElement("button");
+    // Create some elements
+    const [detailsEl, summary, newItemInput, deleteBtn] =
+      createElement("details", "summary", "input", "button");
 
-    Object.assign(editBtn, {
-      classList: ["edit-btn"],
-      type: "button",
-      textContent: "Edit",
-    });
-
-    const newItemInput = document.createElement("input");
+    // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
-    const deleteBtn = document.createElement("button");
 
+    // Add text to summary
+    summary.textContent = list.name;
+
+    // Define delete button 
     Object.assign(deleteBtn, {
       classList: ["delete-item"],
       type: "button",
       textContent: "Delete List",
     });
 
-    summary.textContent = list.name;
-    summary.appendChild(editBtn);
-    detailsEl.appendChild(summary);
-    detailsEl.appendChild(newItemInput);
+    // Create document fragment (this method is better for performance, I've heard)
+    const fragment = document.createDocumentFragment();
 
-    editBtn.onclick = function () {
-      detailsEl.setAttribute("open", "");
-      detailsEl.appendChild(deleteBtn);
-    };
+    // Append the elements to the DocumentFragment
+    fragment.appendChild(summary);
+    fragment.appendChild(newItemInput);
+    fragment.appendChild(deleteBtn);
+
+    // Append the DocumentFragment to the parent element in the DOM
+    detailsEl.appendChild(fragment);
 
     onEnter(newItemInput, function () {
       // Create list element
@@ -85,7 +79,7 @@ export function renderAllLists() {
       listItem.textContent = item;
       listEl.appendChild(listItem);
     }
-// Create fragment might be useful here 
+    // Create fragment might be useful here
     listOfLists.appendChild(detailsEl);
   }
 }
