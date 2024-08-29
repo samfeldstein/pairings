@@ -7,19 +7,21 @@ body {
   font-size: 1.25rem;
 }
 
+main {
+  display: grid;
+  gap: 1rem;
+}
+
 section {
   display: grid;
   gap: 1rem;
+  border: 1px solid;
+  padding: 1rem;
 }
 
 form {
   display: grid;
   gap: 1rem;
-}
-
-summary {
-  display: flex;
-  justify-content: space-between;
 }
 
 footer {
@@ -42,4 +44,9 @@ footer p {
 
 .hidden {
   display: none;
+}
+
+.no-style {
+  list-style-type: none;
+  padding: 0;
 }

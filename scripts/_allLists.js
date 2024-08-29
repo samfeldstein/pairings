@@ -9,54 +9,72 @@ const [listOfLists] = getById("list-of-lists");
 // Render all lists on page load
 renderAllLists();
 
-// Also, this is doing way too much work. Need to refactor
-// Also, createDocumentFragment might be useful here
 export function renderAllLists() {
-  // Prevent duplicates
+  // Prevent duplicates (definitely not the most efficient way to do this)
   listOfLists.innerHTML = "";
 
+// Loop through every object in allLists 
   for (let list of allLists) {
     // Create some elements
-    const [detailsEl, summary, newItemInput, deleteBtn] =
-      createElement("details", "summary", "input", "button");
-
-    // Add a placeholder to the new item input
-    newItemInput.placeholder = "Add list item";
+    const [detailsEl, summary, newItemInput, deleteListBtn, listEl] =
+      createElement("details", "summary", "input", "button", "ul");
 
     // Add text to summary
     summary.textContent = list.name;
 
-    // Define delete button 
-    Object.assign(deleteBtn, {
+    // Give each list an id
+    listEl.id = list.name.toLowerCase(); // Need to account for mutli-word names
+
+    // Add a placeholder to the new item input
+    newItemInput.placeholder = "Add list item";
+
+    // Render list items from the list array of the list object 
+    for (let item of list.list) {
+      // Create li 
+      const listItem = document.createElement("li");
+      // li text = list array element 
+      listItem.textContent = item;
+      // Add li to ul 
+      listEl.appendChild(listItem);
+    }
+
+    // Build details 
+    // Create document fragment (this method is better for performance, I've heard)
+    const fragment = document.createDocumentFragment();
+    // Append the elements to the DocumentFragment
+    // Refactor this the same way you did getById
+    fragment.appendChild(summary);
+    fragment.appendChild(newItemInput);
+    fragment.appendChild(deleteListBtn);
+    fragment.appendChild(listEl);
+    // Append fragment to details 
+    detailsEl.appendChild(fragment);
+
+    // Add new items to the list
+    onEnter(newItemInput, function () {
+      // Update list array
+      // (List is the key in the list object(stored in allLists), and also the parameter in this loop. A bit confusing.)
+      list.list.push(newItemInput.value);
+
+      // Create li
+      const itemEl = document.createElement("li");
+      // Give it some content
+      itemEl.textContent = newItemInput.value;
+      // Add the list item to the list
+      listEl.appendChild(itemEl);
+      // Clear the input
+      newItemInput.value = "";
+      // Update allLists in local storage
+      localStorage.setItem("All Lists", JSON.stringify(allLists));
+    });
+
+    // Delete button
+    Object.assign(deleteListBtn, {
       classList: ["delete-item"],
       type: "button",
       textContent: "Delete List",
     });
-
-    // Create document fragment (this method is better for performance, I've heard)
-    const fragment = document.createDocumentFragment();
-
-    // Append the elements to the DocumentFragment
-    fragment.appendChild(summary);
-    fragment.appendChild(newItemInput);
-    fragment.appendChild(deleteBtn);
-
-    // Append the DocumentFragment to the parent element in the DOM
-    detailsEl.appendChild(fragment);
-
-    onEnter(newItemInput, function () {
-      // Create list element
-      const itemEl = document.createElement("li");
-      // Give it some content
-      itemEl.textContent = newItemInput.value.trim();
-
-      // Add the list item to the list
-      listEl.appendChild(itemEl);
-
-      newItemInput.value = "";
-    });
-
-    deleteBtn.onclick = function () {
+    deleteListBtn.onclick = function () {
       detailsEl.remove();
       // Remove from local storage
       const index = allLists.findIndex((item) => item.name === list.name);
@@ -67,18 +85,6 @@ export function renderAllLists() {
       console.log(localStorage);
     };
 
-    const listEl = document.createElement("ul");
-    listEl.id = list.name.toLowerCase(); // Need to account for mutli-word names
-
-    detailsEl.appendChild(listEl);
-
-    // Render stored arrays as lists
-    for (let item of list.list) {
-      const listItem = document.createElement("li");
-
-      listItem.textContent = item;
-      listEl.appendChild(listItem);
-    }
     // Create fragment might be useful here
     listOfLists.appendChild(detailsEl);
   }
