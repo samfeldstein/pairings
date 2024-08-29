@@ -13,15 +13,13 @@ main {
 }
 
 section {
-  display: grid;
-  gap: 1rem;
   border: 1px solid;
   padding: 1rem;
 }
 
-form {
-  display: grid;
-  gap: 1rem;
+details input {
+  /* For some reason, margin seems to render between buttons and inputs automatically, except here */
+  margin-right: 0.3rem;
 }
 
 footer {
@@ -31,6 +29,16 @@ footer {
 
 footer p {
   margin-bottom: 0;
+}
+
+#new-list-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#new-list li {
+  display: flex;
+  justify-content: space-between;
 }
 
 #form-list-container {
