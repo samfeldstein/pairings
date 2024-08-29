@@ -13,6 +13,7 @@
 ## Fix
 
 - Only render save button if the list is not empty. Or disable it at least.
+- In new list, used required attr instead of showing an error
 
 ## Refactor
 

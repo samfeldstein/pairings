@@ -44,8 +44,23 @@
       </section>
       <section id="generator">
         <h2>Generator</h2>
-        <button id="generate">Generate Pairings</button>
-        <button id="reset" disabled>Reset</button>
+        <form action="">
+          <label for="first-list">Choose first list:</label>
+          <br>
+          <select name="first-list" id="first-list">
+            <option value="">--Choose first list--</option>
+          </select>
+          <br>
+          <label for="second-list">Choose second list:</label>
+          <br>
+          <select name="second-list" id="second-list">
+            <option value="">--Choose second list--</option>
+          </select>
+          <div>
+            <button id="generate" type="button">Generate Pairings</button>
+            <button id="reset" type="button" disabled>Reset</button>
+          </div>
+        </form>
         <h3 class="hidden" id="pairings">Pairings</h3>
       </section>
       <section id="all-lists-section">
