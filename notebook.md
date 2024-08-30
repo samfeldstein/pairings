@@ -18,6 +18,7 @@
   - https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
   - prevent default form behavior, as done in generator
 - Use type="button" to disable default behavior where you can
+- Replace class hidden with hidden attr
 
 ## Refactor
 

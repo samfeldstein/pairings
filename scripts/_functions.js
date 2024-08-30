@@ -62,3 +62,13 @@ export function getRandomElements(array, number) {
 
   return randomElements;
 }
+
+export function renderArrayAsUl(array) {
+  const ul = document.createElement("ul");
+  for (let item of array) {
+    const li = document.createElement("li");
+    li.textContent = item;
+    ul.appendChild(li);
+  }
+  return ul;
+}

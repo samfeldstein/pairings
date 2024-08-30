@@ -1,11 +1,21 @@
 // Select two lists
 // Return both, shuffled and matched up
 
-import { getById } from "./_functions.js";
+import { show, getById, renderArrayAsUl } from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
 // Grab elements
-const [form, firstSelect, secondSelect, generateBtn, resetBtn] = getById(
+const [
+  section,
+  renderedLists,
+  form,
+  firstSelect,
+  secondSelect,
+  generateBtn,
+  resetBtn,
+] = getById(
+  "generator-section",
+  "rendered-lists",
   "generator-form",
   "first-select",
   "second-select",
@@ -23,22 +33,28 @@ for (let list of allLists) {
   secondSelect.innerHTML += option;
 }
 
-// Generate button
-generateBtn.onclick = function () {
-  
-};
-
 // When a list is selected, the name property is used to find the list
-// Find the object in allLists that matches. Use this or self to grab the list property?
 firstSelect.addEventListener("change", () => {
   const selectedList = allLists.find((list) => list.name === firstSelect.value);
-  console.log(selectedList.list);
+  // Good. Now hide this in a div, then generate button displays it
+  renderedLists.appendChild(renderArrayAsUl(selectedList.list));
 });
 
 secondSelect.addEventListener("change", () => {
-  const selectedList = allLists.find((list) => list.name === secondSelect.value);
-  console.log(selectedList.list);
+  const selectedList = allLists.find(
+    (list) => list.name === secondSelect.value
+  );
+  return selectedList.list;
 });
+
+generateBtn.onclick = function () {
+  show(renderedLists);
+};
+
+// shuffle the lists
+//combine them into a single list
+// Render that list
+
 // The array is shuffled
 // A document fragment of the list is built, to prepare for rendering
 // The list is rendered but not displayed
