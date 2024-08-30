@@ -14,6 +14,7 @@
 
 - Only render save button if the list is not empty. Or disable it at least.
 - In new list, used required attr instead of showing an error
+- Use type="button" to disable default behavior where you can
 
 ## Refactor
 

@@ -1,10 +1,27 @@
 // Select two lists
 // Return both, shuffled and matched up
 
-// Create two select elements
-// Loop through allLists, wrap each list in an option element
+import { getById } from "./_functions.js";
+import { allLists } from "./_allLists.js";
 
-// Or just shuffle one? It's random either way, right? But it feels "more random" to do it the first way.
-// It generates a new list. Each list item contains a pair.
+// Grab select elements
+const [firstSelect, secondSelect] = getById("first-select", "second-select");
+
+for (let list of allLists) {
+  const options = `<option>${list.name}</option>`;
+  firstSelect.innerHTML += options;
+  secondSelect.innerHTML += options;
+}
+
+// Loop through allLists, wrap each list name in an option element (document fragment?)
+// Append fragment to both selects
+// When a list is selected, the name property is used to find the list
+// The array is shuffled
+// A document fragment of the list is built, to prepare for rendering
+// The list is rendered but not displayed
+
+// GENERATE PAIRINGS
+// On click, display rendered lists
+// Justify the left one right
 
 // Could be useful: https://www.smashingmagazine.com/2024/08/generating-unique-random-numbers-javascript-using-sets/

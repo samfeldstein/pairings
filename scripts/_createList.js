@@ -87,9 +87,6 @@ saveButton.onclick = function (event) {
   const divsArray = [...childDivs];
   const listItemStrings = divsArray.map((div) => div.textContent);
 
-  console.log("NEW LIST");
-  console.log(listItemStrings);
-
   // Turn the list into an object
   const listObject = {
     name: listNameEl.textContent,
@@ -98,12 +95,9 @@ saveButton.onclick = function (event) {
 
   // Add object to all list array
   allLists.push(listObject);
-  console.log("ALL LISTS");
-  console.log(allLists);
 
   // Store all lists array locally
   localStorage.setItem("All Lists", JSON.stringify(allLists));
-  console.log(localStorage.getItem("All Lists"));
 
   // Clear the list container
   const children = newListContainer.querySelectorAll("*");

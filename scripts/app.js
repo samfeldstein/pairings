@@ -1,5 +1,6 @@
 import "./_createList.js";
 import "./_allLists.js";
+import "./_generator.js";
 import { getRandomElements } from "./_functions.js";
 
 // Lets can't be reassigned when imported
