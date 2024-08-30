@@ -14,6 +14,9 @@
 
 - Only render save button if the list is not empty. Or disable it at least.
 - In new list, used required attr instead of showing an error
+  - With default submit behavior, that should be what you need. Is there a way to prevent page reload, but preserve other functionality?
+  - https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+  - prevent default form behavior, as done in generator
 - Use type="button" to disable default behavior where you can
 
 ## Refactor

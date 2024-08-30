@@ -4,18 +4,41 @@
 import { getById } from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
-// Grab select elements
-const [firstSelect, secondSelect] = getById("first-select", "second-select");
+// Grab elements
+const [form, firstSelect, secondSelect, generateBtn, resetBtn] = getById(
+  "generator-form",
+  "first-select",
+  "second-select",
+  "generate",
+  "reset"
+);
 
+// Prevent page reload
+form.addEventListener("submit", (event) => event.preventDefault());
+
+// Render options
 for (let list of allLists) {
-  const options = `<option>${list.name}</option>`;
-  firstSelect.innerHTML += options;
-  secondSelect.innerHTML += options;
+  const option = `<option>${list.name}</option>`;
+  firstSelect.innerHTML += option;
+  secondSelect.innerHTML += option;
 }
 
-// Loop through allLists, wrap each list name in an option element (document fragment?)
-// Append fragment to both selects
+// Generate button
+generateBtn.onclick = function () {
+  
+};
+
 // When a list is selected, the name property is used to find the list
+// Find the object in allLists that matches. Use this or self to grab the list property?
+firstSelect.addEventListener("change", () => {
+  const selectedList = allLists.find((list) => list.name === firstSelect.value);
+  console.log(selectedList.list);
+});
+
+secondSelect.addEventListener("change", () => {
+  const selectedList = allLists.find((list) => list.name === secondSelect.value);
+  console.log(selectedList.list);
+});
 // The array is shuffled
 // A document fragment of the list is built, to prepare for rendering
 // The list is rendered but not displayed
