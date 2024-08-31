@@ -1,7 +1,7 @@
 // Select two lists
 // Return both, shuffled and matched up
 
-import { show, getById, renderArrayAsUl } from "./_functions.js";
+import { show, getById, renderArrayAsUl, shuffleArray } from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
 // Grab elements
@@ -23,7 +23,7 @@ const [
   "reset"
 );
 
-// Prevent page reload
+// Prevent page reload on submit
 form.addEventListener("submit", (event) => event.preventDefault());
 
 // Render options
@@ -33,18 +33,24 @@ for (let list of allLists) {
   secondSelect.innerHTML += option;
 }
 
-// When a list is selected, the name property is used to find the list
-firstSelect.addEventListener("change", () => {
-  const selectedList = allLists.find((list) => list.name === firstSelect.value);
-  // Good. Now hide this in a div, then generate button displays it
+// Render lists
+function renderSelectedList(selectElement) {
+  const selectedList = allLists.find(
+    (list) => list.name === selectElement.value
+  );
+  console.log(selectedList.list);
+  shuffleArray(selectedList.list);
+  console.log(selectedList.list);
+
   renderedLists.appendChild(renderArrayAsUl(selectedList.list));
+}
+
+firstSelect.addEventListener("change", () => {
+  renderSelectedList(firstSelect);
 });
 
 secondSelect.addEventListener("change", () => {
-  const selectedList = allLists.find(
-    (list) => list.name === secondSelect.value
-  );
-  return selectedList.list;
+  renderSelectedList(secondSelect);
 });
 
 generateBtn.onclick = function () {
