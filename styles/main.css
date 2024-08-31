@@ -45,6 +45,21 @@ footer p {
   gap: 1rem;
 }
 
+#rendered-lists {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+#rendered-lists ul:first-child {
+  text-align: right;
+}
+
+#rendered-lists ul {
+  list-style-type: none;
+  padding: 0;
+}
+
 /* Utilities */
 .grid {
   display: grid;

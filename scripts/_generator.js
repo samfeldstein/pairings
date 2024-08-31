@@ -7,6 +7,7 @@ import { allLists } from "./_allLists.js";
 // Grab elements
 const [
   section,
+  container,
   renderedLists,
   form,
   firstSelect,
@@ -15,6 +16,7 @@ const [
   resetBtn,
 ] = getById(
   "generator-section",
+  "pairings-container",
   "rendered-lists",
   "generator-form",
   "first-select",
@@ -54,7 +56,7 @@ secondSelect.addEventListener("change", () => {
 });
 
 generateBtn.onclick = function () {
-  show(renderedLists);
+  show(container);
 };
 
 // shuffle the lists
