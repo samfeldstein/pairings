@@ -1,13 +1,9 @@
-import { createElement, getById, onEnter } from "./_functions.js";
+import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
 
 // Assign All Lists. Check local storage first
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 
-allLists.sort(function (a, b) {
-  return a.name.localeCompare(b.name);
-});
-
-console.log(allLists);
+sortObjects(allLists, "name");
 
 // All lists ul
 const [listOfLists] = getById("list-of-lists");

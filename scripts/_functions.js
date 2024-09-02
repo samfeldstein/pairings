@@ -73,11 +73,20 @@ export function renderArrayAsUl(array) {
   return ul;
 }
 
-// Shuffle array 
+// Shuffle array
 export function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
   return array;
+}
+
+// Sort an array of objects
+export function sortObjects(object, prop) {
+  object.sort(function (a, b) {
+    // Bracket notation needed here because otherwise it looks for a property called "prop"
+    // b[prop] must be a string
+    return a[prop].localeCompare(b[prop]);
+  });
 }

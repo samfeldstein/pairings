@@ -1,4 +1,11 @@
-import { getById, createElement, onEnter, hide, show } from "./_functions.js";
+import {
+  getById,
+  createElement,
+  onEnter,
+  hide,
+  show,
+  sortObjects,
+} from "./_functions.js";
 import { allLists, renderAllLists } from "./_allLists.js";
 import { renderOptions } from "./_generator.js";
 
@@ -110,6 +117,9 @@ saveButton.onclick = function (event) {
   form.reset();
   hide(form, itemInput, newListContainer);
   show(createListBtn);
+
+  // Sort allLists
+  sortObjects(allLists, "name");
 
   // Render generator options
   renderOptions();
