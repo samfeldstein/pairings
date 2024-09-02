@@ -29,7 +29,7 @@ const [
   "save-new-list"
 );
 
-// Press the button to create a new list
+// createListBtn functions
 createListBtn.onclick = function () {
   hide(this);
   show(form, nameInput);
@@ -118,7 +118,7 @@ saveButton.onclick = function (event) {
   hide(form, itemInput, newListContainer);
   show(createListBtn);
 
-  // Sort allLists
+  // Sort allLists by name
   sortObjects(allLists, "name");
 
   // Render generator options

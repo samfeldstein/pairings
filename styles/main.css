@@ -48,14 +48,16 @@ footer p {
 #rendered-lists {
   display: flex;
   justify-content: center;
+  gap: 1rem;
 }
 
 #rendered-lists ul {
-  padding: 0 0.5rem;
+  margin: 0;
 }
 
 #rendered-lists ul:first-child {
   text-align: right;
+  font-weight: bold;
 }
 
 #rendered-lists ul {

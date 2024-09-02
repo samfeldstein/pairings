@@ -1,7 +1,13 @@
 // Select two lists
 // Return both, shuffled and matched up
 
-import { show, getById, renderArrayAsUl, shuffleArray } from "./_functions.js";
+import {
+  hide,
+  show,
+  getById,
+  renderArrayAsUl,
+  shuffleArray,
+} from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
 // Grab elements
@@ -55,7 +61,23 @@ secondSelect.addEventListener("change", () => {
 generateBtn.onclick = function () {
   if (form.checkValidity() === true) {
     show(container);
+    this.disabled = true;
+    resetBtn.disabled = false;
   }
+};
+
+// Reset logic
+// Form.reset() doesn't work here for some reason
+resetBtn.onclick = function () {
+  // Reset the form
+  firstSelect.selectedIndex = 0;
+  secondSelect.selectedIndex = 0;
+  // Clear and hide rendered list container
+  renderedLists.innerHTML = "";
+  hide(container);
+  // Enable the generate button
+  generateBtn.disabled = false;
+  this.disabled = true;
 };
 
 // Could be useful: https://www.smashingmagazine.com/2024/08/generating-unique-random-numbers-javascript-using-sets/

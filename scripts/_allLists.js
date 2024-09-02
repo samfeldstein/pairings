@@ -1,11 +1,11 @@
 import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
 
-// Assign All Lists. Check local storage first
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 
+// Sort allLists by name 
 sortObjects(allLists, "name");
 
-// All lists ul
+// All grab the All Lists ul 
 const [listOfLists] = getById("list-of-lists");
 
 // Render all lists on page load
