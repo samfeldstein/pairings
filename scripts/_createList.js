@@ -1,5 +1,6 @@
 import { getById, createElement, onEnter, hide, show } from "./_functions.js";
 import { allLists, renderAllLists } from "./_allLists.js";
+import { renderOptions } from "./_generator.js";
 
 const [
   createListBtn,
@@ -109,6 +110,9 @@ saveButton.onclick = function (event) {
   form.reset();
   hide(form, itemInput, newListContainer);
   show(createListBtn);
+
+  // Render generator options
+  renderOptions();
 
   // Render all lists
   renderAllLists();

@@ -47,8 +47,11 @@ footer p {
 
 #rendered-lists {
   display: flex;
-  gap: 1rem;
   justify-content: center;
+}
+
+#rendered-lists ul {
+  padding: 0 0.5rem;
 }
 
 #rendered-lists ul:first-child {
