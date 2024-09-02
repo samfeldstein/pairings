@@ -55,8 +55,15 @@ footer p {
   margin: 0;
 }
 
+/* Select the first ul in #rendered-lists */
 #rendered-lists ul:first-child {
   text-align: right;
+}
+
+/* Select the first li in child uls */
+#rendered-lists > ul > li:first-child {
+  /* Your CSS styles here */
+  font-variant: small-caps;
   font-weight: bold;
 }
 

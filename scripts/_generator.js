@@ -7,6 +7,7 @@ import {
   getById,
   renderArrayAsUl,
   shuffleArray,
+  createElement,
 } from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
@@ -37,29 +38,10 @@ form.addEventListener("submit", (event) => event.preventDefault());
 // Render options on page load
 renderOptions();
 
-// Render lists
-function renderSelectedList(selectElement) {
-  const selectedList = allLists.find(
-    (list) => list.name === selectElement.value
-  );
-  console.log(selectedList.list);
-  shuffleArray(selectedList.list);
-  console.log(selectedList.list);
-
-  renderedLists.appendChild(renderArrayAsUl(selectedList.list));
-}
-
-firstSelect.addEventListener("change", () => {
-  renderSelectedList(firstSelect);
-});
-
-secondSelect.addEventListener("change", () => {
-  renderSelectedList(secondSelect);
-});
-
-// Generate lists
+// Generate logic
 generateBtn.onclick = function () {
   if (form.checkValidity() === true) {
+    renderSelectedList(firstSelect, secondSelect);
     show(container);
     this.disabled = true;
     resetBtn.disabled = false;
@@ -95,5 +77,19 @@ export function renderOptions() {
     const option = `<option>${list.name}</option>`;
     firstSelect.innerHTML += option;
     secondSelect.innerHTML += option;
+  }
+}
+
+// Render lists
+function renderSelectedList(...selectElements) {
+  for (let selectElement of selectElements) {
+    const selectedList = allLists.find(
+      (list) => list.name === selectElement.value
+    );
+    shuffleArray(selectedList.list);
+
+    selectedList.list.unshift(`${selectedList.name}`);
+
+    renderedLists.appendChild(renderArrayAsUl(selectedList.list));
   }
 }
