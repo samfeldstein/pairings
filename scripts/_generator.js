@@ -56,19 +56,9 @@ secondSelect.addEventListener("change", () => {
 });
 
 generateBtn.onclick = function () {
-  show(container);
+  if (form.checkValidity() === true) {
+    show(container);
+  }
 };
-
-// shuffle the lists
-//combine them into a single list
-// Render that list
-
-// The array is shuffled
-// A document fragment of the list is built, to prepare for rendering
-// The list is rendered but not displayed
-
-// GENERATE PAIRINGS
-// On click, display rendered lists
-// Justify the left one right
 
 // Could be useful: https://www.smashingmagazine.com/2024/08/generating-unique-random-numbers-javascript-using-sets/
