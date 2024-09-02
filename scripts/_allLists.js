@@ -3,6 +3,12 @@ import { createElement, getById, onEnter } from "./_functions.js";
 // Assign All Lists. Check local storage first
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 
+allLists.sort(function (a, b) {
+  return a.name.localeCompare(b.name);
+});
+
+console.log(allLists);
+
 // All lists ul
 const [listOfLists] = getById("list-of-lists");
 
@@ -13,7 +19,7 @@ export function renderAllLists() {
   // Prevent duplicates (definitely not the most efficient way to do this)
   listOfLists.innerHTML = "";
 
-// Loop through every object in allLists 
+  // Loop through every object in allLists
   for (let list of allLists) {
     // Create some elements
     const [detailsEl, summary, newItemInput, deleteListBtn, listEl] =
@@ -23,22 +29,22 @@ export function renderAllLists() {
     summary.textContent = list.name;
 
     // Give each list an id
-    listEl.id = list.name.toLowerCase(); // Need to account for mutli-word names
+    listEl.id = list.name.toLowerCase(); // Need to account for multi-word names
 
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
-    // Render list items from the list array of the list object 
+    // Render list items from the list array of the list object
     for (let item of list.list) {
-      // Create li 
+      // Create li
       const listItem = document.createElement("li");
-      // li text = list array element 
+      // li text = list array element
       listItem.textContent = item;
-      // Add li to ul 
+      // Add li to ul
       listEl.appendChild(listItem);
     }
 
-    // Build details 
+    // Build details
     // Create document fragment (this method is better for performance, I've heard)
     const fragment = document.createDocumentFragment();
     // Append the elements to the DocumentFragment
@@ -47,7 +53,7 @@ export function renderAllLists() {
     fragment.appendChild(newItemInput);
     fragment.appendChild(deleteListBtn);
     fragment.appendChild(listEl);
-    // Append fragment to details 
+    // Append fragment to details
     detailsEl.appendChild(fragment);
 
     // Add new items to the list
