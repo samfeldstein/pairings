@@ -113,7 +113,7 @@ saveButton.onclick = function (event) {
 
   // Reset the form
   form.reset();
-  hide(form, itemInput, newListContainer);
+  hide(form, newListContainer, this);
   show(createListBtn);
 
   // Sort all lists
