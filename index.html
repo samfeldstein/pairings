@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Recombinator</title>
+    <title>Pairings</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -17,10 +17,10 @@
   </head>
 
   <body>
-    <h1>Recombinator</h1>
+    <h1>Pairings</h1>
     <main>
       <section id="new-list-section">
-        <h2>Create New Lists</h2>
+        <h2>Create Lists</h2>
         <button id="create-list-btn">Create New List</button>
         <form id="new-list-form" class="hidden" action="">
           <input
@@ -42,6 +42,10 @@
           <button id="save-new-list" type="submit">Save List</button>
         </form>
       </section>
+      <section id="all-lists-section">
+        <h2>All Lists</h2>
+        <ul id="list-of-lists" class="grid"></ul>
+      </section>
       <section id="generator-section">
         <h2>Generator</h2>
         <form action="" id="generator-form">
@@ -62,12 +66,9 @@
           <div id="rendered-lists"></div>
         </div>
       </section>
-      <section id="all-lists-section">
-        <h2>All Lists</h2>
-        <ul id="list-of-lists" class="no-style"></ul>
-      </section>
+      
     </main>
-    <footer>
+    <footer class="center">
       <p>Made by <a href="https://samfeldstein.xyz">Sam Feldstein</a>.</p>
     </footer>
   </body>

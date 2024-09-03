@@ -12,6 +12,9 @@
 - Remove items from lists in all lists
 - Aria label for create list delete buttons
 - Style deleteable list items with a class
+- Document meta
+- Sort items in all lists
+- Multiword list ids
 
 ## Fix
 

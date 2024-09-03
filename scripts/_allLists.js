@@ -44,7 +44,7 @@ export function renderAllLists() {
       Object.assign(deleteBtn, {
         classList: ["delete-item"],
         type: "button",
-        textContent: "Delete",
+        textContent: "Delete Item",
       });
 
       // Delete button logic
@@ -65,17 +65,17 @@ export function renderAllLists() {
       listEl.appendChild(itemEl);
     }
 
-    // Build details
-    // Create document fragment (this method is better for performance, I've heard)
-    const fragment = document.createDocumentFragment();
-    // Append the elements to the DocumentFragment
-    // Refactor this the same way you did getById
-    fragment.appendChild(summary);
-    fragment.appendChild(newItemInput);
-    fragment.appendChild(deleteListBtn);
-    fragment.appendChild(listEl);
-    // Append fragment to details
-    detailsEl.appendChild(fragment);
+    // Build details element
+
+    const [container] = createElement("div");
+
+    container.classList.add("flex", "space-between");
+    container.appendChild(newItemInput);
+    container.appendChild(deleteListBtn);
+
+    detailsEl.appendChild(summary);
+    detailsEl.appendChild(container);
+    detailsEl.appendChild(listEl);
 
     // Add new items to the list
     onEnter(newItemInput, function () {

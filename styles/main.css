@@ -5,6 +5,9 @@ body {
   margin: 0 auto;
   padding: 1rem;
   font-size: 1.25rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
+    serif;
+  font-weight: normal;
 }
 
 main {
@@ -12,14 +15,42 @@ main {
   gap: 1rem;
 }
 
+h1,
+h2 {
+  text-align: center;
+  font-variant: small-caps;
+}
+
 section {
   border: 1px solid;
   padding: 1rem;
 }
 
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+details {
+  cursor: pointer;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: grey;
+  padding-bottom: 1rem;
+}
+
 details input {
   /* For some reason, margin seems to render between buttons and inputs automatically, except here */
   margin-right: 0.3rem;
+}
+
+details ul {
+  display: grid;
+  gap: 1rem;
+}
+
+summary {
+  margin: 1rem 0;
 }
 
 footer {
@@ -36,9 +67,18 @@ footer p {
   padding: 0;
 }
 
-#new-list li {
+#new-list li,
+#list-of-lists li {
   display: flex;
   justify-content: space-between;
+}
+
+#list-of-lists {
+  gap: 1rem;
+}
+
+#list-of-lists ul {
+  margin: 1rem 0;
 }
 
 #form-list-container {
@@ -84,4 +124,16 @@ footer p {
 .no-style {
   list-style-type: none;
   padding: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
 }
