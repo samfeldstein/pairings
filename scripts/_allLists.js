@@ -1,16 +1,17 @@
 import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
 
+// Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
-
-// Sort allLists by name 
-sortObjects(allLists, "name");
-
-// All grab the All Lists ul 
+// Grab the All Lists ul
 const [listOfLists] = getById("list-of-lists");
+
+// Sort allLists by name
+sortObjects(allLists, "name");
 
 // Render all lists on page load
 renderAllLists();
 
+// Render all lists
 export function renderAllLists() {
   // Prevent duplicates (definitely not the most efficient way to do this)
   listOfLists.innerHTML = "";
@@ -30,14 +31,38 @@ export function renderAllLists() {
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
-    // Render list items from the list array of the list object
+    // Render list items from the list prop of the object
     for (let item of list.list) {
-      // Create li
-      const listItem = document.createElement("li");
-      // li text = list array element
-      listItem.textContent = item;
+      const [itemEl, itemText, deleteBtn] = createElement(
+        "li",
+        "div",
+        "button"
+      );
+
+      // Define elsewhere?
+      // Delete button properties
+      Object.assign(deleteBtn, {
+        classList: ["delete-item"],
+        type: "button",
+        textContent: "Delete",
+      });
+
+      // Delete button logic
+      // This can be defined elsewhere?
+      deleteBtn.onclick = function () {
+        itemEl.remove();
+        const index = list.list.indexOf(item);
+        list.list.splice(index, 1);
+        console.log(list.list);
+        localStorage.setItem("All Lists", JSON.stringify(allLists));
+      };
+
+      itemText.textContent = item;
+
+      itemEl.appendChild(itemText);
+      itemEl.appendChild(deleteBtn);
       // Add li to ul
-      listEl.appendChild(listItem);
+      listEl.appendChild(itemEl);
     }
 
     // Build details
