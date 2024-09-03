@@ -13,15 +13,17 @@
 - Aria label for create list delete buttons
 - Style deleteable list items with a class
 - Document meta
-- Sort items in all lists
+- When you delete a list, it doesn't disappear from generator options
 - Multiword list ids
+- Hide save button while entering new list name. If it's already there, people might think they're supposed to click it
+- Adding list items in all lists doesn't sort, and doesn't add delete buttons
 
 ## Fix
 
 - Only render save button if the list is not empty. Or disable it at least.
 - In new list, used required attr instead of showing an error
   - With default submit behavior, that should be what you need. Is there a way to prevent page reload, but preserve other functionality?
-  - https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation
+  - <https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation>
   - prevent default form behavior, as done in generator
 - Use type="button" to disable default behavior where you can
 - Replace class hidden with hidden attr

@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A tool to generate random pairings from lists."
+    />
     <title>Pairings</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -30,7 +34,6 @@
           />
           <input
             id="new-list-item"
-            class="hidden"
             type="text"
             placeholder="Add new list item"
           />
@@ -39,7 +42,9 @@
             <ul id="new-list"></ul>
           </div>
 
-          <button id="save-new-list" type="submit">Save List</button>
+          <button id="save-new-list" class="hidden" type="submit">
+            Save List
+          </button>
         </form>
       </section>
       <section id="all-lists-section">
@@ -66,7 +71,6 @@
           <div id="rendered-lists"></div>
         </div>
       </section>
-      
     </main>
     <footer class="center">
       <p>Made by <a href="https://samfeldstein.xyz">Sam Feldstein</a>.</p>

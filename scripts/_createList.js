@@ -7,7 +7,6 @@ import {
   sortObjects,
 } from "./_functions.js";
 import { allLists, renderAllLists } from "./_allLists.js";
-import { renderOptions } from "./_generator.js";
 
 const [
   createListBtn,
@@ -29,27 +28,22 @@ const [
   "save-new-list"
 );
 
-// createListBtn functions
+// Create list button logic
 createListBtn.onclick = function () {
   hide(this);
-  show(form, nameInput);
+  show(form);
   nameInput.focus();
 };
 
-// If you unfocus the name input without hitting enter, hide the input and show the create button
-// As is, code run if you click the save button. We'd solved this earlier by hiding the save button until you enter a name or item, but that was proving challenging on its own.
-// nameInput.onblur = function () {
-//   if (itemInput.classList.contains("hidden")) {
-//     hide(form);
-//     show(createListBtn);
-//   }
-// };
+// If the item input is hidden, meaning you haven't entered a name yet, hide the name input when you click elsewhere
+nameInput.onblur = function () {
+  // If you tab through instead of hitting enter, name will still be saved
+  listNameEl.textContent = nameInput.value;
+};
 
 // Enter list name
 onEnter(nameInput, function () {
-  listNameEl.textContent = nameInput.value;
-  show(newListContainer);
-  show(itemInput);
+  show(form);
   itemInput.focus();
 });
 
@@ -57,18 +51,19 @@ onEnter(nameInput, function () {
 onEnter(itemInput, function () {
   const [itemEl, itemText, deleteBtn] = createElement("li", "div", "button");
 
-  // Delete button functions
+  // Delete button props
   Object.assign(deleteBtn, {
     classList: ["delete-item"],
     type: "button",
     textContent: "Delete",
   });
 
+  // Delete button logic
   deleteBtn.onclick = function () {
     itemEl.remove();
   };
 
-  // Add item text content, append it and delete button to the li element
+  // Add item text content, append it and delete button to the li
   itemText.textContent = itemInput.value;
   itemEl.appendChild(itemText);
   itemEl.appendChild(deleteBtn);
@@ -76,11 +71,14 @@ onEnter(itemInput, function () {
   // Add li to ul
   listEl.appendChild(itemEl);
 
+  // Show save button
+  show(saveButton, newListContainer);
+
   // Clear the input
   itemInput.value = "";
 });
 
-// Save new list
+// Save button logic
 saveButton.onclick = function (event) {
   event.preventDefault(); // Prevent page refresh
 
@@ -118,11 +116,9 @@ saveButton.onclick = function (event) {
   hide(form, itemInput, newListContainer);
   show(createListBtn);
 
-  // Sort allLists by name
+  // Sort all lists
+  // If this isn't here, lists aren't sorted for rendering as options
   sortObjects(allLists, "name");
-
-  // Render generator options
-  renderOptions();
 
   // Render all lists
   renderAllLists();

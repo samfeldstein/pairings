@@ -3,10 +3,12 @@ import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
 // Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 // Grab the All Lists ul
-const [listOfLists] = getById("list-of-lists");
-
-// Sort allLists by name
-sortObjects(allLists, "name");
+const [listOfLists, renderedLists, firstSelect, secondSelect] = getById(
+  "list-of-lists",
+  "rendered-lists",
+  "first-select",
+  "second-select"
+);
 
 // Render all lists on page load
 renderAllLists();
@@ -15,6 +17,9 @@ renderAllLists();
 export function renderAllLists() {
   // Prevent duplicates (definitely not the most efficient way to do this)
   listOfLists.innerHTML = "";
+
+  // Sort allLists by name
+  sortObjects(allLists, "name");
 
   // Loop through every object in allLists
   for (let list of allLists) {
@@ -26,35 +31,33 @@ export function renderAllLists() {
     summary.textContent = list.name;
 
     // Give each list an id
-    listEl.id = list.name.toLowerCase(); // Need to account for multi-word names
+    listEl.id = list.name.toLowerCase();
 
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
     // Render list items from the list prop of the object
-    for (let item of list.list) {
+    for (let item of list.list.sort()) {
       const [itemEl, itemText, deleteBtn] = createElement(
         "li",
         "div",
         "button"
       );
 
-      // Define elsewhere?
-      // Delete button properties
+      // Delete list item button properties
       Object.assign(deleteBtn, {
         classList: ["delete-item"],
         type: "button",
         textContent: "Delete Item",
       });
 
-      // Delete button logic
-      // This can be defined elsewhere?
+      // Delete list item button logic
       deleteBtn.onclick = function () {
         itemEl.remove();
         const index = list.list.indexOf(item);
         list.list.splice(index, 1);
-        console.log(list.list);
         localStorage.setItem("All Lists", JSON.stringify(allLists));
+        renderAllLists();
       };
 
       itemText.textContent = item;
@@ -66,7 +69,6 @@ export function renderAllLists() {
     }
 
     // Build details element
-
     const [container] = createElement("div");
 
     container.classList.add("flex", "space-between");
@@ -95,12 +97,13 @@ export function renderAllLists() {
       localStorage.setItem("All Lists", JSON.stringify(allLists));
     });
 
-    // Delete button
+    // Delete list button
     Object.assign(deleteListBtn, {
       classList: ["delete-item"],
       type: "button",
       textContent: "Delete List",
     });
+    // Delete list button logic
     deleteListBtn.onclick = function () {
       detailsEl.remove();
       // Remove from local storage
@@ -108,11 +111,29 @@ export function renderAllLists() {
       if (index !== -1) {
         allLists.splice(index, 1);
         localStorage.setItem("All Lists", JSON.stringify(allLists));
+        renderAllLists();
       }
       console.log(localStorage);
     };
 
     // Create fragment might be useful here
     listOfLists.appendChild(detailsEl);
+  }
+
+  renderOptions();
+}
+
+export function renderOptions() {
+  // As with allLists, clearing the whole thing is probably not the best way to do this
+  renderedLists.innerHTML = "";
+  // Add a default option
+  const defaultOption = `<option value="">--Choose list--</option>`;
+  firstSelect.innerHTML = defaultOption;
+  secondSelect.innerHTML = defaultOption;
+  // Render saved lists as options
+  for (let list of allLists) {
+    const option = `<option>${list.name}</option>`;
+    firstSelect.innerHTML += option;
+    secondSelect.innerHTML += option;
   }
 }
