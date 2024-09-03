@@ -61,14 +61,22 @@ resetBtn.onclick = function () {
 
 // Render lists
 function renderSelectedList(...selectElements) {
+  // Loop through select elements
   for (let selectElement of selectElements) {
+    // Match list.name to the selected value
     const selectedList = allLists.find(
       (list) => list.name === selectElement.value
     );
+    // Shuffle the array
     shuffleArray(selectedList.list);
+    // Add the list name as the first li
+    const listName = document.createElement("div");
+    listName.textContent = selectedList.name;
 
-    selectedList.list.unshift(`${selectedList.name}`);
-
-    renderedLists.appendChild(renderArrayAsUl(selectedList.list));
+    const renderedList = renderArrayAsUl(selectedList.list);
+    renderedList.prepend(listName);
+    renderedLists.appendChild(renderedList);
+    // Render the ul
+    // renderedLists.appendChild(renderArrayAsUl(selectedList.list));
   }
 }
