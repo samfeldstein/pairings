@@ -76,7 +76,5 @@ function renderSelectedList(...selectElements) {
     const renderedList = renderArrayAsUl(selectedList.list);
     renderedList.prepend(listName);
     renderedLists.appendChild(renderedList);
-    // Render the ul
-    // renderedLists.appendChild(renderArrayAsUl(selectedList.list));
   }
 }

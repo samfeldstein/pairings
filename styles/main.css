@@ -102,10 +102,10 @@ footer p {
 }
 
 /* Select the first li in child uls */
-#rendered-lists > ul > li:first-child {
+#rendered-lists div {
   /* Your CSS styles here */
   font-variant: small-caps;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 #rendered-lists ul {
