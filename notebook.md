@@ -29,6 +29,7 @@
 - Replace class hidden with hidden attr
 - Generator reset behavior should just occur when you hit the generate button
 - Make list names bigger in all lists 
+- Allow change of saved list names
 
 ## Refactor
 
