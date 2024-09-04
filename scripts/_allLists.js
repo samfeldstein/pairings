@@ -52,12 +52,14 @@ export function renderAllLists() {
       });
 
       // Delete list item button logic
-      deleteBtn.onclick = function () {
+      deleteBtn.onclick = function (event) {
+        console.log(event);
+
         itemEl.remove();
         const index = list.list.indexOf(item);
         list.list.splice(index, 1);
         localStorage.setItem("All Lists", JSON.stringify(allLists));
-        renderAllLists();
+        renderOptions();
       };
 
       // Build li
@@ -98,7 +100,6 @@ export function renderAllLists() {
 
     // Delete list button
     Object.assign(deleteListBtn, {
-      classList: ["delete-item"],
       type: "button",
       textContent: "Delete List",
     });

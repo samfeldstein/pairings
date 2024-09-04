@@ -32,7 +32,6 @@ ul {
 }
 
 details {
-  cursor: pointer;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-bottom-color: grey;
@@ -51,6 +50,7 @@ details ul {
 
 summary {
   margin: 1rem 0;
+  cursor: pointer;
 }
 
 footer {
