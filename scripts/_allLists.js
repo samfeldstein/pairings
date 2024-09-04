@@ -6,11 +6,12 @@ import {
   appendChildren,
   removeFromArray,
 } from "./_functions.js";
+import { renderOptions } from "./_generator.js";
 
 // Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
 // Grab some elements
-const [listOfLists, renderedLists, firstSelect, secondSelect] = getById(
+const [listOfLists] = getById(
   "list-of-lists",
   "rendered-lists",
   "first-select",
@@ -73,6 +74,7 @@ export function renderAllLists() {
 
     appendChildren(container, [newItemInput, deleteListBtn]);
     appendChildren(detailsEl, [summary, container, listEl]);
+    listOfLists.appendChild(detailsEl);
 
     // Add new items to the list
     onEnter(newItemInput, function () {
@@ -94,32 +96,13 @@ export function renderAllLists() {
     // Delete list button properties
     deleteListBtn.type = "button";
     deleteListBtn.textContent = "Delete List";
-
     // Delete list button logic
     deleteListBtn.onclick = function () {
       removeFromArray(allLists, list);
       localStorage.setItem("All Lists", JSON.stringify(allLists));
       renderAllLists();
     };
-
-    // Create fragment might be useful here
-    listOfLists.appendChild(detailsEl);
   }
 
   renderOptions();
-}
-
-export function renderOptions() {
-  // As with allLists, clearing the whole thing is probably not the best way to do this
-  renderedLists.innerHTML = "";
-  // Add a default option
-  const defaultOption = `<option value="">--Choose list--</option>`;
-  firstSelect.innerHTML = defaultOption;
-  secondSelect.innerHTML = defaultOption;
-  // Render saved lists as options
-  for (let list of allLists) {
-    const option = `<option>${list.name}</option>`;
-    firstSelect.innerHTML += option;
-    secondSelect.innerHTML += option;
-  }
 }
