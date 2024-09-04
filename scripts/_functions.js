@@ -97,3 +97,9 @@ export function appendChildren(parent, children) {
     parent.appendChild(child);
   }
 }
+
+// Delete an item from an array
+export function removeFromArray(array, item) {
+  const index = array.indexOf(item);
+  array.splice(index, 1);
+}

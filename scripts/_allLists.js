@@ -1,4 +1,11 @@
-import { createElement, getById, onEnter, sortObjects, appendChildren } from "./_functions.js";
+import {
+  createElement,
+  getById,
+  onEnter,
+  sortObjects,
+  appendChildren,
+  removeFromArray,
+} from "./_functions.js";
 
 // Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
@@ -33,7 +40,7 @@ export function renderAllLists() {
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
-    // Render loop through the list array in each object 
+    // Render loop through the list array in each object
     for (let item of list.list.sort()) {
       const [itemEl, itemText, deleteItemBtn] = createElement(
         "li",
@@ -51,8 +58,7 @@ export function renderAllLists() {
       // Delete list item button logic
       deleteItemBtn.onclick = function () {
         itemEl.remove();
-        const index = list.list.indexOf(item);
-        list.list.splice(index, 1);
+        removeFromArray(list.list, item);
         localStorage.setItem("All Lists", JSON.stringify(allLists));
         renderOptions();
       };
@@ -68,24 +74,16 @@ export function renderAllLists() {
     appendChildren(container, [newItemInput, deleteListBtn]);
     appendChildren(detailsEl, [summary, container, listEl]);
 
-    // container.appendChild(newItemInput);
-    // container.appendChild(deleteListBtn);
-
-    // detailsEl.appendChild(summary);
-    // detailsEl.appendChild(container);
-    // detailsEl.appendChild(listEl);
-
     // Add new items to the list
     onEnter(newItemInput, function () {
       // Update list array
       // (List is the key in the list object(stored in allLists), and also the parameter in this loop. A bit confusing.)
       list.list.push(newItemInput.value);
 
-      // Create li
+      // Creat li element
       const itemEl = document.createElement("li");
-      // Give it some content
       itemEl.textContent = newItemInput.value;
-      // Add the list item to the list
+      // Add the li to the ul
       listEl.appendChild(itemEl);
       // Clear the input
       newItemInput.value = "";
@@ -93,22 +91,15 @@ export function renderAllLists() {
       localStorage.setItem("All Lists", JSON.stringify(allLists));
     });
 
-    // Delete list button
-    Object.assign(deleteListBtn, {
-      type: "button",
-      textContent: "Delete List",
-    });
+    // Delete list button properties
+    deleteListBtn.type = "button";
+    deleteListBtn.textContent = "Delete List";
+
     // Delete list button logic
     deleteListBtn.onclick = function () {
-      detailsEl.remove();
-      // Remove from local storage
-      const index = allLists.findIndex((item) => item.name === list.name);
-      if (index !== -1) {
-        allLists.splice(index, 1);
-        localStorage.setItem("All Lists", JSON.stringify(allLists));
-        renderAllLists();
-      }
-      console.log(localStorage);
+      removeFromArray(allLists, list);
+      localStorage.setItem("All Lists", JSON.stringify(allLists));
+      renderAllLists();
     };
 
     // Create fragment might be useful here
