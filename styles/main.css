@@ -4,7 +4,6 @@ body {
   max-width: 30rem;
   margin: 0 auto;
   padding: 1rem;
-  font-size: 1.25rem;
   font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
     serif;
   font-weight: normal;
@@ -71,7 +70,11 @@ footer p {
 #new-list li,
 #list-of-lists li {
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+}
+
+#save-new-list {
+  float: right;
 }
 
 #list-of-lists {
@@ -84,6 +87,10 @@ footer p {
 
 #form-list-container {
   gap: 1rem;
+}
+
+#generator-form div {
+  margin: 1rem 0;
 }
 
 #rendered-lists {

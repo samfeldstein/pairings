@@ -65,8 +65,8 @@ onEnter(itemInput, function () {
 
   // Add item text content, append it and delete button to the li
   itemText.textContent = itemInput.value;
-  itemEl.appendChild(itemText);
   itemEl.appendChild(deleteBtn);
+  itemEl.appendChild(itemText);
 
   // Add li to ul
   listEl.appendChild(itemEl);

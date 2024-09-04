@@ -27,6 +27,7 @@
   - prevent default form behavior, as done in generator
 - Use type="button" to disable default behavior where you can
 - Replace class hidden with hidden attr
+- Generator reset behavior should just occur when you hit the generate button
 
 ## Refactor
 

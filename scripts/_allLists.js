@@ -60,10 +60,10 @@ export function renderAllLists() {
         renderAllLists();
       };
 
+      // Build li
       itemText.textContent = item;
-
-      itemEl.appendChild(itemText);
       itemEl.appendChild(deleteBtn);
+      itemEl.appendChild(itemText);
       // Add li to ul
       listEl.appendChild(itemEl);
     }
@@ -71,7 +71,6 @@ export function renderAllLists() {
     // Build details element
     const [container] = createElement("div");
 
-    container.classList.add("flex", "space-between");
     container.appendChild(newItemInput);
     container.appendChild(deleteListBtn);
 
