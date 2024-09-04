@@ -2,7 +2,7 @@ import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
 
 // Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
-// Grab the All Lists ul
+// Grab some elements 
 const [listOfLists, renderedLists, firstSelect, secondSelect] = getById(
   "list-of-lists",
   "rendered-lists",
@@ -15,23 +15,20 @@ renderAllLists();
 
 // Render all lists
 export function renderAllLists() {
-  // Prevent duplicates (definitely not the most efficient way to do this)
+  // Clear the whole thing first to prevent duplicates (definitely not the most efficient way to do this)
   listOfLists.innerHTML = "";
 
   // Sort allLists by name
+  // This is inside this function because renderAllLists is called elsewhere, and we want to make sure it's sorted every time
   sortObjects(allLists, "name");
 
-  // Loop through every object in allLists
+  // Loop through every object in allLists and turn each one into a details element
   for (let list of allLists) {
     // Create some elements
     const [detailsEl, summary, newItemInput, deleteListBtn, listEl] =
       createElement("details", "summary", "input", "button", "ul");
 
-    // Add text to summary
     summary.textContent = list.name;
-
-    // Give each list an id
-    listEl.id = list.name.toLowerCase();
 
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
