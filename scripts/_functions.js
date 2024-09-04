@@ -90,3 +90,10 @@ export function sortObjects(object, prop) {
     return a[prop].localeCompare(b[prop]);
   });
 }
+
+// Append mutliple children to an element
+export function appendChildren(parent, children) {
+  for (let child of children) {
+    parent.appendChild(child);
+  }
+}

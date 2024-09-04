@@ -1,8 +1,8 @@
-import { createElement, getById, onEnter, sortObjects } from "./_functions.js";
+import { createElement, getById, onEnter, sortObjects, appendChildren } from "./_functions.js";
 
 // Grab allLists from local storage
 export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
-// Grab some elements 
+// Grab some elements
 const [listOfLists, renderedLists, firstSelect, secondSelect] = getById(
   "list-of-lists",
   "rendered-lists",
@@ -25,33 +25,31 @@ export function renderAllLists() {
   // Loop through every object in allLists and turn each one into a details element
   for (let list of allLists) {
     // Create some elements
-    const [detailsEl, summary, newItemInput, deleteListBtn, listEl] =
-      createElement("details", "summary", "input", "button", "ul");
+    const [detailsEl, summary, newItemInput, deleteListBtn, listEl, container] =
+      createElement("details", "summary", "input", "button", "ul", "div");
 
     summary.textContent = list.name;
 
     // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
-    // Render list items from the list prop of the object
+    // Render loop through the list array in each object 
     for (let item of list.list.sort()) {
-      const [itemEl, itemText, deleteBtn] = createElement(
+      const [itemEl, itemText, deleteItemBtn] = createElement(
         "li",
         "div",
         "button"
       );
 
       // Delete list item button properties
-      Object.assign(deleteBtn, {
+      Object.assign(deleteItemBtn, {
         classList: ["delete-item"],
         type: "button",
         textContent: "Delete Item",
       });
 
       // Delete list item button logic
-      deleteBtn.onclick = function (event) {
-        console.log(event);
-
+      deleteItemBtn.onclick = function () {
         itemEl.remove();
         const index = list.list.indexOf(item);
         list.list.splice(index, 1);
@@ -59,23 +57,23 @@ export function renderAllLists() {
         renderOptions();
       };
 
-      // Build li
+      // Build li element
       itemText.textContent = item;
-      itemEl.appendChild(deleteBtn);
+      itemEl.appendChild(deleteItemBtn);
       itemEl.appendChild(itemText);
-      // Add li to ul
+      // Add li to ul element
       listEl.appendChild(itemEl);
     }
 
-    // Build details element
-    const [container] = createElement("div");
+    appendChildren(container, [newItemInput, deleteListBtn]);
+    appendChildren(detailsEl, [summary, container, listEl]);
 
-    container.appendChild(newItemInput);
-    container.appendChild(deleteListBtn);
+    // container.appendChild(newItemInput);
+    // container.appendChild(deleteListBtn);
 
-    detailsEl.appendChild(summary);
-    detailsEl.appendChild(container);
-    detailsEl.appendChild(listEl);
+    // detailsEl.appendChild(summary);
+    // detailsEl.appendChild(container);
+    // detailsEl.appendChild(listEl);
 
     // Add new items to the list
     onEnter(newItemInput, function () {
