@@ -44,7 +44,6 @@ nameInput.onblur = function () {
 
 // Enter list name
 onEnter(nameInput, function () {
-  show(form);
   itemInput.focus();
 });
 

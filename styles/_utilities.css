@@ -1,0 +1,25 @@
+/* Utilities */
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+.no-style {
+  list-style-type: none;
+  padding: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.space-between {
+  justify-content: space-between;
+}
