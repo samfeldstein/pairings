@@ -1,35 +1,26 @@
 # Notebook
 
-## Roadmap
+## To do
 
-- Delete lists
-- Edit lists (delete and add items)
-- Sort lists
-- Select lists to pair
-- Disable save button if there's nothing to save
-  - This has proven harder than it sounds, and since it's not all-important I'm going to move on for now.
-- Rendered listed are stacking on top of each other in the all lists section. The problem should be in the render list function.
-- Remove items from lists in all lists
-- Aria label for create list delete buttons
-- Style deleteable list items with a class
-- Document meta
-- When you delete a list, it doesn't disappear from generator options
-- Multiword list ids
-- Hide save button while entering new list name. If it's already there, people might think they're supposed to click it
-- Adding list items in all lists doesn't sort, and doesn't add delete buttons
-
-## Fix
-
-- Only render save button if the list is not empty. Or disable it at least.
-- In new list, used required attr instead of showing an error
-  - With default submit behavior, that should be what you need. Is there a way to prevent page reload, but preserve other functionality?
-  - <https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation>
-  - prevent default form behavior, as done in generator
+- Accessibility
+  - Keyboard
+  - Voiceover
 - Use type="button" to disable default behavior where you can
 - Replace class hidden with hidden attr
 - Generator reset behavior should just occur when you hit the generate button
 - Make list names bigger in all lists 
 - Allow change of saved list names
+- Colorful buttons
+- Add space between create list items
+
+## Issues
+
+- When you add an item to a saved list, the list doesn't sort automatically. It also doesn't add a delete button.
+  - This doesn't seem like a huge deal, so I'm leaving it alone for now.
+  
+## Resources
+
+- [MDN Docs - Form Validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 
 ## Refactor
 

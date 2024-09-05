@@ -3,7 +3,7 @@ export function getById(...ids) {
   return ids.map((id) => document.getElementById(id));
 }
 
-export function createElement(...tags) {
+export function createElements(...tags) {
   return tags.map((tag) => document.createElement(tag));
 }
 
@@ -102,4 +102,13 @@ export function appendChildren(parent, children) {
 export function removeFromArray(array, item) {
   const index = array.indexOf(item);
   array.splice(index, 1);
+}
+
+// Create createElement
+export function createElement(tag, props) {
+  const element = document.createElement(tag);
+
+  Object.assign(element, props);
+
+  return element;
 }

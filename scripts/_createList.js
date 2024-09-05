@@ -1,10 +1,11 @@
 import {
   getById,
-  createElement,
+  createElements,
   onEnter,
   hide,
   show,
   sortObjects,
+  createElement,
 } from "./_functions.js";
 import { allLists, renderAllLists } from "./_allLists.js";
 
@@ -49,23 +50,22 @@ onEnter(nameInput, function () {
 
 // Enter list items
 onEnter(itemInput, function () {
-  const [itemEl, itemText, deleteBtn] = createElement("li", "div", "button");
+  const [itemEl, itemText] = createElements("li", "div");
 
-  // Delete button props
-  Object.assign(deleteBtn, {
-    classList: ["delete-item"],
+  const deleteButton = createElement("button", {
     type: "button",
-    textContent: "Delete",
+    classList: ["delete item"],
+    textContent: "Delete Item",
   });
 
   // Delete button logic
-  deleteBtn.onclick = function () {
+  deleteButton.onclick = function () {
     itemEl.remove();
   };
 
   // Add item text content, append it and delete button to the li
   itemText.textContent = itemInput.value;
-  itemEl.appendChild(deleteBtn);
+  itemEl.appendChild(deleteButton);
   itemEl.appendChild(itemText);
 
   // Add li to ul

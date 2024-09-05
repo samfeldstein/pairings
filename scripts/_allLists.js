@@ -1,10 +1,11 @@
 import {
-  createElement,
+  createElements,
   getById,
   onEnter,
   sortObjects,
   appendChildren,
   removeFromArray,
+  createElement,
 } from "./_functions.js";
 import { renderOptions } from "./_generator.js";
 
@@ -33,8 +34,21 @@ export function renderAllLists() {
   // Loop through every object in allLists and turn each one into a details element
   for (let list of allLists) {
     // Create some elements
-    const [detailsEl, summary, newItemInput, deleteListBtn, listEl, container] =
-      createElement("details", "summary", "input", "button", "ul", "div");
+    const [detailsEl, summary, newItemInput, listEl, container] =
+      createElements("details", "summary", "input", "ul", "div");
+
+    const deleteListButton = createElement("button", {
+      type: "button",
+      classList: ["delete list"],
+      textContent: "Delete List",
+    });
+
+    // Delete list button logic
+    deleteListButton.onclick = function () {
+      removeFromArray(allLists, list);
+      localStorage.setItem("All Lists", JSON.stringify(allLists));
+      renderAllLists();
+    };
 
     summary.textContent = list.name;
 
@@ -43,16 +57,11 @@ export function renderAllLists() {
 
     // Render loop through the list array in each object
     for (let item of list.list.sort()) {
-      const [itemEl, itemText, deleteItemBtn] = createElement(
-        "li",
-        "div",
-        "button"
-      );
+      const [itemEl, itemText] = createElements("li", "div");
 
-      // Delete list item button properties
-      Object.assign(deleteItemBtn, {
-        classList: ["delete-item"],
+      const deleteItemBtn = createElement("button", {
         type: "button",
+        classList: ["delete item"],
         textContent: "Delete Item",
       });
 
@@ -72,7 +81,7 @@ export function renderAllLists() {
       listEl.appendChild(itemEl);
     }
 
-    appendChildren(container, [newItemInput, deleteListBtn]);
+    appendChildren(container, [newItemInput, deleteListButton]);
     appendChildren(detailsEl, [summary, container, listEl]);
     listOfLists.appendChild(detailsEl);
 
@@ -92,16 +101,6 @@ export function renderAllLists() {
       // Update allLists in local storage
       localStorage.setItem("All Lists", JSON.stringify(allLists));
     });
-
-    // Delete list button properties
-    deleteListBtn.type = "button";
-    deleteListBtn.textContent = "Delete List";
-    // Delete list button logic
-    deleteListBtn.onclick = function () {
-      removeFromArray(allLists, list);
-      localStorage.setItem("All Lists", JSON.stringify(allLists));
-      renderAllLists();
-    };
   }
 
   renderOptions();
