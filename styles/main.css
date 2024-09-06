@@ -74,6 +74,7 @@ button {
   border-width: 1px;
   border-radius: 5px;
   font: inherit;
+  transition: .25s;
 }
 
 button:hover {
@@ -104,6 +105,8 @@ button:hover {
 summary {
   margin: 1rem 0;
   cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 footer {
