@@ -5,15 +5,13 @@ import { show, getById, renderArrayAsUl, shuffleArray } from "./_functions.js";
 import { allLists } from "./_allLists.js";
 
 // Grab elements
-const [container, renderedLists, form, firstSelect, secondSelect, generateBtn] =
-  getById(
-    "pairings-container",
-    "rendered-lists",
-    "generator-form",
-    "first-select",
-    "second-select",
-    "generate"
-  );
+const [renderedLists, form, firstSelect, secondSelect, generateBtn] = getById(
+  "rendered-lists",
+  "generator-form",
+  "first-select",
+  "second-select",
+  "generate"
+);
 
 // Prevent page reload on submit
 form.addEventListener("submit", (event) => event.preventDefault());
@@ -27,7 +25,9 @@ generateBtn.onclick = function () {
     }
 
     renderSelectedList(firstSelect, secondSelect);
-    show(container);
+    show(renderedLists);
+    // When I'd hardcoded display flex, it was making the div take up space even when it was hidden.
+    renderedLists.classList.add("flex");
   }
 };
 
@@ -55,7 +55,7 @@ export function renderOptions() {
   // As with allLists, clearing the whole thing is probably not the best way to do this
   renderedLists.innerHTML = "";
   // Add a default option
-  const defaultOption = `<option value="">--Choose list--</option>`;
+  const defaultOption = `<option value="">--</option>`;
   firstSelect.innerHTML = defaultOption;
   secondSelect.innerHTML = defaultOption;
   // Render saved lists as options

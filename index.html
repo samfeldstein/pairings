@@ -55,21 +55,15 @@
       <section id="generator-section">
         <h2>Generator</h2>
         <form action="" id="generator-form">
-          <label for="first-select">Choose first list:</label>
-          <br />
+          <label for="first-select"><strong>Choose first list:</strong></label>
           <select name="first-list" id="first-select" required></select>
-          <br />
-          <label for="second-select">Choose second list:</label>
-          <br />
+          <label for="second-select"
+            ><strong>Choose second list:</strong></label
+          >
           <select name="second-list" id="second-select" required></select>
-          <div>
-            <button id="generate" type="submit">Generate Pairings</button>
-          </div>
+          <button id="generate" type="submit">Generate Pairings</button>
         </form>
-        <div id="pairings-container" class="hidden">
-          <h3>Pairings</h3>
-          <div id="rendered-lists"></div>
-        </div>
+        <div id="rendered-lists" hidden></div>
       </section>
     </main>
     <footer class="center">

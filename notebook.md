@@ -2,6 +2,8 @@
 
 ## To do
 
+- On load, show just the three buttons to enter each section. That way the screen isn't crowded by anything that's not relevant.
+
 ### Accessiblity
 
 - Keyboard

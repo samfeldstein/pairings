@@ -23,19 +23,22 @@ h3 {
 }
 
 section {
-  border: 1px solid;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c5c5c5;
+  border-radius: 5px;
   padding: 1rem;
   display: grid;
 }
 
 ul {
   padding: 0;
-  display: grid;
-  gap: 1rem;
 }
 
 select {
   cursor: pointer;
+  padding: 0.75rem;
+  font: inherit;
 }
 
 details {
@@ -47,7 +50,7 @@ details {
 
 details input {
   /* It won't grow on it's own if this isn't set explicitly. */
-  max-width: 100%;
+  width: 100%;
 }
 
 details ul {
@@ -74,7 +77,7 @@ button {
   border-width: 1px;
   border-radius: 5px;
   font: inherit;
-  transition: .25s;
+  transition: 0.25s;
 }
 
 button:hover {
@@ -146,9 +149,10 @@ footer p {
 }
 
 #rendered-lists {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   gap: 1rem;
+  margin-top: 2rem;
 }
 
 #rendered-lists ul {
