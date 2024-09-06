@@ -23,3 +23,7 @@
 .space-between {
   justify-content: space-between;
 }
+
+.box-shadow {
+  box-shadow: var(--box-shadow);
+}
