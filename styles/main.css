@@ -18,8 +18,7 @@ body {
   max-width: 30rem;
   margin: 0 auto;
   padding: 1rem;
-  font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
-    serif;
+  font-family: "EB Garamond";
   font-size: 1.25rem;
   gap: 1rem;
 }
@@ -41,6 +40,7 @@ h1 {
   border-width: 1px;
   border-color: #c5c5c5;
   border-radius: 5px;
+  padding: 0 2rem;
   font-family: "Beachman Script";
   font-weight: normal;
   font-size: 7rem;
@@ -56,7 +56,7 @@ section {
   border-width: 1px;
   border-color: #c5c5c5;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 2rem;
   display: grid;
   box-shadow: var(--box-shadow);
 }

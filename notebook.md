@@ -8,6 +8,9 @@
 - Fonts
   - Font files
   - Fallback
+- Preload fonts
+- Increase section padding
+- Select borders
 
 ### Accessiblity
 
