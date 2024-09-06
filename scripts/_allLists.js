@@ -34,9 +34,14 @@ export function renderAllLists() {
   // Loop through every object in allLists and turn each one into a details element
   for (let list of allLists) {
     // Create some elements
-    const [detailsEl, summary, newItemInput, listEl, container] =
-      createElements("details", "summary", "input", "ul", "div");
+    const [detailsEl, summary, newItemInput, listEl] = createElements(
+      "details",
+      "summary",
+      "input",
+      "ul"
+    );
 
+    // Create button to delete lists
     const deleteListButton = createElement("button", {
       type: "button",
       classList: ["delete list"],
@@ -81,8 +86,12 @@ export function renderAllLists() {
       listEl.appendChild(itemEl);
     }
 
-    appendChildren(container, [newItemInput, deleteListButton]);
-    appendChildren(detailsEl, [summary, container, listEl]);
+    appendChildren(detailsEl, [
+      summary,
+      newItemInput,
+      listEl,
+      deleteListButton,
+    ]);
     listOfLists.appendChild(detailsEl);
 
     // Add new items to the list
