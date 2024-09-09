@@ -27,3 +27,15 @@
 .box-shadow {
   box-shadow: var(--box-shadow);
 }
+
+.visually-hidden {
+  position: absolute;
+  translate: -1000%;
+}
+
+.border {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c5c5c5;
+  border-radius: 5px;
+}

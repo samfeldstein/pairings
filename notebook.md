@@ -1,33 +1,28 @@
-# Notebook
+---
+title: Notebook
+---
 
-## To do
+## Checklist for this site
 
-- On load, show just the three buttons to enter each section. That way the screen isn't crowded by anything that's not relevant.
-- Style credits
-- Help section/readme
-- Fonts
-  - Font files
-  - Fallback
-- Preload fonts
-- Increase section padding
-- Select borders
+## Checklist for every site
+
+### Styles
+
+- [x] Add fonts
+- [x] Preload fonts
+- [ ] Clean up CSS
+- [ ] Credits
+
+### Docs
+
+- ReadMe
+- Help section
 
 ### Accessiblity
 
-- Keyboard
-- Voiceover
-
-### Style
-
-- Make list names bigger in all lists
-- Colorful buttons
-- Add space between create list items
+- Test keyboard shortcuts
+- Test voiceover
 
 ## Issues
 
-- When you add an item to a saved list, the list doesn't sort automatically. It also doesn't add a delete button.
-  - This doesn't seem like a huge deal, so I'm leaving it alone for now.
-  
-## Resources
-
-- [MDN Docs - Form Validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+When you add an item to a saved list, the list doesn't sort automatically. It also doesn't add a delete button. This doesn't seem like a huge deal, so I'm leaving it alone for now.

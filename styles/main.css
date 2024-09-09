@@ -6,24 +6,20 @@
 html {
   /* https://www.magicpattern.design/tools/css-backgrounds */
   background-color: var(--background-color);
-  opacity: 0.8;
-  background-image: radial-gradient(
-    var(--accent) 0.5px,
-    var(--background-color) 1px
-  );
-  background-size: 15px 15px;
 }
 
 body {
   max-width: 30rem;
   margin: 0 auto;
   padding: 1rem;
-  font-family: "EB Garamond";
+  font-family: "EB Garamond", serif;
   font-size: 1.25rem;
+  display: grid;
   gap: 1rem;
 }
 
 main {
+  display: grid;
   gap: 1rem;
 }
 
@@ -36,10 +32,6 @@ h3 {
 h1 {
   background-color: white;
   margin: 0;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #c5c5c5;
-  border-radius: 5px;
   padding: 0 2rem;
   font-family: "Beachman Script";
   font-weight: normal;
@@ -67,6 +59,8 @@ ul {
 
 select {
   cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
   padding: 0.75rem;
   font: inherit;
 }
@@ -79,7 +73,7 @@ details {
 }
 
 details input {
-  /* It won't grow on it's own if this isn't set explicitly. */
+  /* It won't grow on its own if this isn't set explicitly. */
   width: 100%;
 }
 
@@ -110,7 +104,8 @@ button {
   transition: 0.25s;
 }
 
-button:hover {
+button:hover,
+button:focus {
   cursor: pointer;
   background-color: white;
   color: green;
@@ -124,7 +119,8 @@ button:hover {
   font-size: 1rem;
 }
 
-.delete:hover {
+.delete:hover,
+.delete:focus {
   color: red;
   border-color: red;
 }
@@ -144,10 +140,6 @@ summary {
 
 footer {
   background-color: white;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #c5c5c5;
-  border-radius: 5px;
   padding: 1rem;
   font-size: 1rem;
 }
@@ -195,14 +187,11 @@ footer {
   text-align: right;
 }
 
-/* Select the first li in child uls */
 #rendered-lists div {
-  /* Your CSS styles here */
-  font-variant: small-caps;
-  font-weight: 900;
+  font-family: "EB Garamond Bold";
+  font-size: 1.5rem;
 }
 
 #rendered-lists ul {
   list-style-type: none;
-  padding: 0;
 }

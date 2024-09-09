@@ -8,10 +8,8 @@
       content="A tool to generate random pairings from lists."
     />
     <title>Pairings</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preloads -->
     <link
       rel="preload"
       href="/fonts/BeachmanScript.woff2"
@@ -33,6 +31,14 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
+    <link rel="preload" href="/styles/main.css" as="style" />
+    <link rel="preload" href="/scripts/app.js" as="script" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Styles -->
     <link rel="stylesheet" href="/styles/main.css" />
@@ -41,11 +47,11 @@
     <script type="module" src="/scripts/app.js" async></script>
   </head>
 
-  <body class="grid">
-    <h1 class="box-shadow center">Pairings</h1>
-    <main class="grid">
+  <body>
+    <h1 class="box-shadow center border">Pairings</h1>
+    <main>
       <section id="new-list-section">
-        <h2>Create Lists</h2>
+        <h2>Add Lists</h2>
         <button id="create-list-btn" type="button">Create New List</button>
         <form id="new-list-form" class="hidden" action="">
           <input
@@ -70,11 +76,11 @@
         </form>
       </section>
       <section id="all-lists-section">
-        <h2>All Lists</h2>
+        <h2>List of Lists</h2>
         <ul id="list-of-lists" class="grid"></ul>
       </section>
       <section id="generator-section">
-        <h2>Generator</h2>
+        <h2>Generate Pairings</h2>
         <form action="" id="generator-form">
           <label for="first-select"><strong>Choose first list:</strong></label>
           <select name="first-list" id="first-select" required></select>
@@ -87,7 +93,7 @@
         <div id="rendered-lists" hidden></div>
       </section>
     </main>
-    <footer class="center box-shadow">
+    <footer class="center box-shadow border">
       Made by <a href="https://samfeldstein.xyz">Sam Feldstein</a>.
     </footer>
   </body>
