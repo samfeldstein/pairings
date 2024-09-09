@@ -6,6 +6,7 @@ title: Notebook
 
 - Deploy and make sure it works live
 - Make it a PWA
+- What to do with extras? For instance, if there are more students than saints.
 
 ### Content
 

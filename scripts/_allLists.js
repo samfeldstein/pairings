@@ -9,8 +9,24 @@ import {
 } from "./_functions.js";
 import { renderOptions } from "./_generator.js";
 
+const exampleLists = [
+  {
+    name: "Students",
+    list: ["Alyssa Rivera", "Jake Thompson", "Zachary Patel"],
+  },
+  {
+    name: "Saints",
+    list: [
+      "Saint Francis of Assisi",
+      "Saint Teresa of Ávila",
+      "Saint Thomas Aquinas",
+    ],
+  },
+];
+
 // Grab allLists from local storage
-export const allLists = JSON.parse(localStorage.getItem("All Lists")) || [];
+export const allLists =
+  JSON.parse(localStorage.getItem("All Lists")) || exampleLists;
 // Grab some elements
 const [listOfLists] = getById(
   "list-of-lists",
