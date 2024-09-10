@@ -16,7 +16,7 @@ const [renderedLists, form, firstSelect, secondSelect, generateBtn] = getById(
 // Prevent page reload on submit
 form.addEventListener("submit", (event) => event.preventDefault());
 
-// Generate logic
+// Generate button logic
 generateBtn.onclick = function () {
   if (form.checkValidity() === true) {
     // If rendered lists exist, get rid of em. This lets the user generate as many times in a row as they want.
@@ -24,7 +24,10 @@ generateBtn.onclick = function () {
       renderedLists.innerHTML = "";
     }
 
-    renderSelectedList(firstSelect, secondSelect);
+    // Render lists
+    renderPairings(firstSelect, secondSelect);
+
+    // Show the section
     show(renderedLists);
     // When I'd hardcoded display flex, it was making the div take up space even when it was hidden.
     renderedLists.classList.add("flex");
@@ -32,23 +35,33 @@ generateBtn.onclick = function () {
 };
 
 // Render lists
-function renderSelectedList(...selectElements) {
+function renderPairings(...selectElements) {
+  const selectedLists = [];
+  const pairings = [];
+
   // Loop through select elements
   for (let selectElement of selectElements) {
-    // Match list.name to the selected value
+    // Match list.name to the selected value to find the array
     const selectedList = allLists.find(
       (list) => list.name === selectElement.value
     );
     // Shuffle the array
     shuffleArray(selectedList.list);
-    // Add the list name as the first li
-    const listName = document.createElement("div");
-    listName.textContent = selectedList.name;
 
-    const renderedList = renderArrayAsUl(selectedList.list);
-    renderedList.prepend(listName);
-    renderedLists.appendChild(renderedList);
+    // Add the selected lists to an array
+    selectedLists.push(selectedList.list);
   }
+
+  // Return pairings as an array
+  let i = 0;
+  while (i < selectedLists[0].length && i < selectedLists[1].length) {
+    pairings.push(`${selectedLists[0][i]}, ${selectedLists[1][i]}`);
+    i++;
+  }
+
+  // Render pairings
+  const renderedList = renderArrayAsUl(pairings);
+  renderedLists.appendChild(renderedList);
 }
 
 export function renderOptions() {
