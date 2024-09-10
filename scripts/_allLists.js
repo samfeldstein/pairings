@@ -60,6 +60,11 @@ export function renderAllLists() {
       "ul"
     );
 
+    const saveButton = createElement("button", {
+      classList: ["save list"],
+      textContent: "Save Changes",
+    });
+
     // Create button to delete lists
     const deleteListButton = createElement("button", {
       type: "button",
@@ -70,6 +75,11 @@ export function renderAllLists() {
     // Delete list button logic
     deleteListButton.onclick = function () {
       removeFromArray(allLists, list);
+      localStorage.setItem("All Lists", JSON.stringify(allLists));
+      renderAllLists();
+    };
+
+    saveButton.onclick = function () {
       localStorage.setItem("All Lists", JSON.stringify(allLists));
       renderAllLists();
     };
@@ -91,8 +101,6 @@ export function renderAllLists() {
       deleteItemBtn.onclick = function () {
         itemEl.remove();
         removeFromArray(list.list, item);
-        localStorage.setItem("All Lists", JSON.stringify(allLists));
-        renderOptions();
       };
 
       // Build li element
@@ -106,6 +114,7 @@ export function renderAllLists() {
     appendChildren(detailsEl, [
       summary,
       newItemInput,
+      saveButton,
       listEl,
       deleteListButton,
     ]);
@@ -125,7 +134,7 @@ export function renderAllLists() {
       // Clear the input
       newItemInput.value = "";
       // Update allLists in local storage
-      localStorage.setItem("All Lists", JSON.stringify(allLists));
+      // localStorage.setItem("All Lists", JSON.stringify(allLists));
     });
   }
 

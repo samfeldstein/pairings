@@ -3,10 +3,6 @@ export function getById(...ids) {
   return ids.map((id) => document.getElementById(id));
 }
 
-export function createElements(...tags) {
-  return tags.map((tag) => document.createElement(tag));
-}
-
 // On enter, do something
 export function onEnter(element, callback) {
   element.addEventListener("keydown", function (event) {
@@ -108,7 +104,12 @@ export function removeFromArray(array, item) {
 export function createElement(tag, props) {
   const element = document.createElement(tag);
 
+  // "props" is an object
   Object.assign(element, props);
 
   return element;
+}
+
+export function createElements(...tags) {
+  return tags.map((tag) => document.createElement(tag));
 }
