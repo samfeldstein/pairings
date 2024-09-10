@@ -1,7 +1,20 @@
 @import "_reset.css";
 @import "_fonts.css";
-@import "_config.css";
 @import "_utilities.css";
+
+:root {
+  color-scheme: light dark;
+}
+
+/* When you use color scheme above, it doesn't seem to account for focus visible in  dark mode. */
+@media (prefers-color-scheme: dark) {
+  :focus-visible {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: white;
+    border-radius: 2px;
+  }
+}
 
 body {
   max-width: 40rem;
@@ -30,5 +43,5 @@ h1 {
 a {
   font-variant: small-caps;
   text-underline-offset: 0.2em;
-  color: #2754d8;
+  /* color: #2754d8; */
 }

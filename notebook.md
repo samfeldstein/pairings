@@ -39,6 +39,5 @@ title: Notebook
 ## Issues
 
 - When you add an item to a saved list, the list doesn't sort automatically. It also doesn't add a delete button. This doesn't seem like a huge deal, so I'm leaving it alone for now.
-  - Acutally, when you add items in list of lists, they probably need to sort and render delete button right away. Cause otherwise that won't happen until the user force quits the app. Maybe get this done with a save button that calls render all lists.
-- Generated pairings wrapping doesn't work on mobile. Probably need to use a table or put each pairings in its own li.
-- Got rid of generated list names, so remove those styles
+  - Acutally, when you add items in list of lists, they probably need to sort and render delete button right away. Cause otherwise that won't happen until the user force quits the app.
+  - Maybe get this done with a save button that calls render all lists.

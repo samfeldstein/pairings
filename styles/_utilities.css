@@ -24,10 +24,6 @@
   justify-content: space-between;
 }
 
-.box-shadow {
-  box-shadow: var(--box-shadow);
-}
-
 .visually-hidden {
   position: absolute;
   translate: -1000%;

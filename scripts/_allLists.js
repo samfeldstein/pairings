@@ -35,13 +35,8 @@ const exampleLists = [
 // Grab allLists from local storage
 export const allLists =
   JSON.parse(localStorage.getItem("All Lists")) || exampleLists;
-// Grab some elements
-const [listOfLists] = getById(
-  "list-of-lists",
-  "rendered-lists",
-  "first-select",
-  "second-select"
-);
+
+const [listOfLists] = getById("list-of-lists");
 
 // Render all lists on page load
 renderAllLists();
@@ -80,11 +75,9 @@ export function renderAllLists() {
     };
 
     summary.textContent = list.name;
-
-    // Add a placeholder to the new item input
     newItemInput.placeholder = "Add list item";
 
-    // Render loop through the list array in each object
+    // Loop through the list array in each object
     for (let item of list.list.sort()) {
       const [itemEl, itemText] = createElements("li", "div");
 

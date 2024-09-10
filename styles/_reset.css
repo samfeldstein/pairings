@@ -23,6 +23,11 @@ img {
   height: auto;
 }
 
+button:hover,
+button:focus {
+  cursor: pointer;
+}
+
 /* Correct the inheritance and scaling of font size in all browsers */
 pre,
 code,
