@@ -12,14 +12,22 @@ import { renderOptions } from "./_generator.js";
 const exampleLists = [
   {
     name: "Students",
-    list: ["Alyssa Rivera", "Jake Thompson", "Zachary Patel"],
+    list: [
+      "Alyssa Rivera",
+      "Jake Thompson",
+      "Zachary Patel",
+      "Jonathan Baker",
+      "Maddy Atzen",
+    ],
   },
   {
     name: "Saints",
     list: [
+      "Saint Peter",
       "Saint Francis of Assisi",
       "Saint Teresa of Ávila",
-      "Saint Thomas Aquinas",
+      "Saint Augustine",
+      "Saint Thérèse of Lisieux",
     ],
   },
 ];

@@ -29,8 +29,7 @@ generateBtn.onclick = function () {
 
     // Show the section
     show(renderedLists);
-    // When I'd hardcoded display flex, it was making the div take up space even when it was hidden.
-    renderedLists.classList.add("flex");
+    
   }
 };
 

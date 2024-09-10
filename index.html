@@ -31,7 +31,7 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <link rel="preload" href="/styles/main.css" as="style" />
+    <link rel="preload" href="/styles/global.css" as="style" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -40,7 +40,177 @@
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <style>
+      html {
+        background-color: var(--background-color);
+      }
+
+      body {
+        display: grid;
+        gap: 1rem;
+      }
+
+      nav {
+        background-color: white;
+        border-width: 1px;
+        padding: 1rem;
+        box-shadow: var(--box-shadow);
+      }
+
+      main {
+        display: grid;
+        gap: 1rem;
+      }
+
+      h1 {
+        background-color: white;
+        margin: 0;
+        padding: 1rem;
+        box-shadow: var(--box-shadow);
+      }
+
+      h2,
+      h3 {
+        text-align: center;
+        font-variant: small-caps;
+      }
+
+      section {
+        background-color: white;
+        border-width: 1px;
+        padding: 1rem;
+        display: grid;
+        box-shadow: var(--box-shadow);
+      }
+
+      ul {
+        padding: 0;
+      }
+
+      select {
+        cursor: pointer;
+        border-style: solid;
+        border-width: 1px;
+        padding: 0.75rem;
+        font: inherit;
+      }
+
+      details {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: grey;
+        padding-bottom: 1rem;
+      }
+
+      details input {
+        /* It won't grow on its own if this isn't set explicitly. */
+        width: 100%;
+      }
+
+      details ul {
+        display: grid;
+        gap: 1rem;
+      }
+
+      form {
+        display: grid;
+        gap: 1rem;
+      }
+
+      input {
+        padding: 0.75rem;
+        font: inherit;
+      }
+
+      button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 0.75rem;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 3px;
+        font: inherit;
+        transition: 0.25s;
+      }
+
+      button:hover,
+      button:focus {
+        cursor: pointer;
+        background-color: white;
+        color: green;
+        border-color: green;
+      }
+
+      .delete {
+        background-color: red;
+        color: white;
+        padding: 0.25rem;
+        font-size: 1rem;
+      }
+
+      .delete:hover,
+      .delete:focus {
+        color: red;
+        border-color: red;
+      }
+
+      .delete.list {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: inherit;
+      }
+
+      summary {
+        margin: 1rem 0;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+
+      summary::marker {
+        font-size: 1rem;
+      }
+
+      footer {
+        background-color: white;
+        padding: 1rem;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+      }
+
+      #new-list li,
+      #list-of-lists li {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+      }
+
+      #save-new-list {
+        float: right;
+      }
+
+      #list-of-lists {
+        gap: 1rem;
+      }
+
+      #list-of-lists ul {
+        margin: 1rem 0;
+      }
+
+      #rendered-lists ul {
+        list-style-type: none;
+        display: grid;
+        gap: 1rem;
+      }
+
+      #rendered-lists ul li {
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+        border-bottom-color: grey;
+        padding-bottom: 1rem;
+      }
+    </style>
 
     <!-- Scripts -->
     <script type="module" src="/scripts/app.js" async></script>
@@ -50,7 +220,7 @@
     <nav>
       <a href="/about.html">What is this?</a>
     </nav>
-    <h1 class="box-shadow center border">Pairings</h1>
+    <h1>Pairings</h1>
     <main>
       <section id="new-list-section">
         <h2>Add Lists</h2>
@@ -95,7 +265,7 @@
         <div id="rendered-lists" class="hidden"></div>
       </section>
     </main>
-    <footer class="center box-shadow border">
+    <footer>
       Made by
       <a href="https://samfeldstein.xyz" target="_blank">Sam Feldstein</a>.
     </footer>

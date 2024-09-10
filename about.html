@@ -8,6 +8,7 @@
       content="A tool to generate random pairings from lists."
     />
     <title>About | Pairings</title>
+
     <!-- Preloads -->
     <link
       rel="preload"
@@ -30,51 +31,18 @@
       type="font/woff2"
       crossorigin="anonymous"
     />
-    <link rel="preload" href="/styles/_reset.css" as="style" />
-    <link rel="preload" href="/styles/_fonts.css" as="style" />
+    <link rel="preload" href="/styles/global.css" as="style" />
+
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="/styles/global.css" />
     <style>
-      @import url(/styles/_reset.css);
-      @import url(/styles/_fonts.css);
-
-      body {
-        max-width: 40rem;
-        margin: 0 auto;
-        padding: 1rem;
-        font-family: "EB Garamond", serif;
-      }
-
-      nav {
-        display: flex;
-        gap: 1rem;
-      }
-
-      h1 {
-        font-family: "Beachman Script", serif;
-        font-size: 5rem;
-        font-weight: 400;
-        text-align: center;
-      }
-
-      main {
-        font-size: 1.25rem;
-      }
-
       p {
         text-align: justify;
-      }
-
-      a {
-        font-variant: small-caps;
-        color: #2754d8;
-      }
-
-      img {
-        display: inline;
       }
 
       code {
@@ -102,8 +70,8 @@
       <p>
         What the app does is generate random pairings from any two lists. I've
         included two example lists so you can try it out. Feel free to delete
-        them. It should be pretty straightforward, but if you have any questions, please
-        don't hesitate to email me at
+        them. It should be pretty straightforward, but if you have any
+        questions, please don't hesitate to email me at
         <a href="mailto:sam@samfeldstein.xyz">sam@samfeldstein.xyz</a>
       </p>
       <p>
