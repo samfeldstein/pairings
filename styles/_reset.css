@@ -33,8 +33,9 @@ input {
   color: inherit;
 }
 
-button:hover,
-button:focus {
+button,
+select,
+summary {
   cursor: pointer;
 }
 
