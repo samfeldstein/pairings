@@ -27,6 +27,7 @@ form,
 button,
 button[type="submit"],
 input {
+  /* Select elements not included because it removes the dropdown arrow */
   -webkit-appearance: auto;
   -moz-appearance: auto;
   appearance: auto;
@@ -39,7 +40,6 @@ summary {
   cursor: pointer;
 }
 
-/* Correct the inheritance and scaling of font size in all browsers */
 pre,
 code,
 kbd,

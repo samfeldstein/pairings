@@ -2,25 +2,27 @@
 @import "_fonts.css";
 @import "_utilities.css";
 
-/* https://sarajoy.dev/blog/color-scheme/ */
+/* Tried using color-scheme rule per this article: https://sarajoy.dev/blog/color-scheme/. But it ended up being more trouble than it was worth because it messed up :focus-visible in dark mode. Also, I have to manually override webkit styles, which requires prefers-color-scheme. */
 :root {
-  color-scheme: light dark;
-}
+  /* Colors */
+  --background-color: #fff;
+  --text-color: #000;
+  --link-color: #2754d8;
+  --accent: lightgrey;
 
-/* When you use color-scheme above, it doesn't seem to account for :focus-visible in  dark mode. */
-@media (prefers-color-scheme: dark) {
-  :focus-visible {
-    outline-style: solid;
-    outline-width: 2px;
-    outline-color: white;
-    border-radius: 2px;
+  @media (prefers-color-scheme: dark) {
+    /* Dark mode styles */
+    --text-color: #fff;
+    --background-color: #000;
+    --link-color: #6699ff;
+    --accent: grey;
   }
 }
 
 /* Ensures consistent background color even when the "curtain comes up" */
 html {
-  background-color: Canvas;
-  color: CanvasText;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 body {
@@ -50,5 +52,5 @@ h1 {
 a {
   font-variant: small-caps;
   text-underline-offset: 0.2em;
-  /* color: #2754d8; */
+  color: var(--link-color);
 }
