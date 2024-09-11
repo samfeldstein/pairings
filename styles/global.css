@@ -1,5 +1,5 @@
-@import "_reset-min.css";
-@import "_fonts-min.css";
+@import "_reset.css";
+@import "_fonts.css";
 
 /* Tried using color-scheme rule per this article: https://sarajoy.dev/blog/color-scheme/. But it ended up being more trouble than it was worth because it messed up :focus-visible in dark mode. Also, I have to manually override webkit styles, which requires prefers-color-scheme. */
 :root {
@@ -22,7 +22,6 @@
 html {
   background-color: var(--background-color);
   color: var(--text-color);
-  background-color: Canvas;
 }
 
 body {
