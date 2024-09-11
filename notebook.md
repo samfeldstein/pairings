@@ -37,5 +37,5 @@ title: Notebook
 
 ### Docs
 
-- [ ] ReadMe
+- [x] ReadMe
 - [x] PWA instructions
