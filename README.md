@@ -1,4 +1,6 @@
-# README
+---
+title: ReadME
+---
 
 I had a friend who taught religion at a Catholic school and needed a way to pair her students with a random saint for a project. She hadn't yet found a tool for the job, so I decided to  build one for her.
 

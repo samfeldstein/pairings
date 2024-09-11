@@ -2,11 +2,12 @@
 @import "_fonts.css";
 @import "_utilities.css";
 
+/* https://sarajoy.dev/blog/color-scheme/ */
 :root {
   color-scheme: light dark;
 }
 
-/* When you use color scheme above, it doesn't seem to account for focus visible in  dark mode. */
+/* When you use color-scheme above, it doesn't seem to account for :focus-visible in  dark mode. */
 @media (prefers-color-scheme: dark) {
   :focus-visible {
     outline-style: solid;
@@ -14,6 +15,12 @@
     outline-color: white;
     border-radius: 2px;
   }
+}
+
+/* Ensures consistent background color even when the "curtain comes up" */
+html {
+  background-color: Canvas;
+  color: CanvasText;
 }
 
 body {
