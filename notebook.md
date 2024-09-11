@@ -4,8 +4,7 @@ title: Notebook
 
 ## Checklist for this site
 
-- Deploy and make sure it works live
-- Make it a [PWA](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Guides/Offline_and_background_operation)
+- [x] Test live site
 
 ### Content
 
@@ -20,23 +19,23 @@ title: Notebook
 - [x] Preload fonts
 - [x] Credits
 
-### Docs
-
-- [ ] ReadMe
-- [x] PWA instructions
-
 ### Accessibility
 
 - [x] Test keyboard shortcuts
 - [ ] Test voiceover
 
-## Cross-browser testing
+### Cross-browser testing
 
-- [ ] Chrome
-- [ ] Safari
-- [ ] Firefox
-- [ ] Vivaldi
+- [x] Chrome
+- [x] Safari
+- [x] Firefox
+- [x] Vivaldi
 
-## Performance
+### Performance
 
 - [ ] Run Chrome Lighthouse
+
+### Docs
+
+- [ ] ReadMe
+- [x] PWA instructions
