@@ -4,14 +4,15 @@ title: Notebook
 
 ## Checklist for this site
 
-- [x] Test live site
+### Content
+
+- [x] PWA instructions
+
+## Checklist for every site
 
 ### Content
 
-- [x] Help page
-  - [x] PWA instructions
-
-## Checklist for every site
+- [x] Privacy Policy
 
 ### Styles
 
@@ -33,9 +34,8 @@ title: Notebook
 
 ### Performance
 
-- [ ] Run Chrome Lighthouse
+- [x] Run Chrome Lighthouse
 
 ### Docs
 
 - [x] ReadMe
-- [x] PWA instructions

@@ -53,3 +53,14 @@ a {
   text-underline-offset: 0.2em;
   color: var(--link-color);
 }
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+footer {
+  margin: 4rem auto;
+  text-align: center;
+  text-wrap: balance;
+}
