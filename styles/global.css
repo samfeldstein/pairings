@@ -7,7 +7,7 @@
   --background-color: #fff;
   --text-color: #000;
   --link-color: #2754d8;
-  --accent: lightgrey;
+  --accent: #e2e2e2;
 
   @media (prefers-color-scheme: dark) {
     /* Dark mode styles */
@@ -60,7 +60,8 @@ a:focus {
 }
 
 footer {
-  margin: 4rem auto;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
   text-align: center;
   text-wrap: balance;
 }
