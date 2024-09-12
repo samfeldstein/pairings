@@ -23,6 +23,7 @@ img {
   height: auto;
 }
 
+/* Style form elements on mobile */
 form,
 button,
 button[type="submit"],
@@ -31,7 +32,6 @@ input {
   -webkit-appearance: auto;
   -moz-appearance: auto;
   appearance: auto;
-  color: inherit;
 }
 
 button,
