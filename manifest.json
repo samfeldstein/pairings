@@ -1,6 +1,6 @@
 {
-  "name": "Pairings Generator",
-  "short_name": "Pairings",
+  "name": "Pairings",
+  "start_url": "https://pairingapp.netlify.app",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

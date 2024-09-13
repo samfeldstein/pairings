@@ -8,6 +8,10 @@ title: Notebook
 
 - [x] PWA instructions
 
+## PWA
+
+- [PWA Builder](https://docs.pwabuilder.com/#/builder/quick-start)
+
 ## Checklist for every site
 
 ### Content
