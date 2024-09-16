@@ -2,7 +2,7 @@
 
 const cacheVersion = "v1";
 
-const stuffToCache = [
+const coreAssets = [
   "/",
   "/index.html",
   "/about.html",
@@ -20,54 +20,93 @@ const stuffToCache = [
   "/fonts/subset-EBGaramond-Regular.woff2",
 ];
 
-// Cache on install
-self.addEventListener("install", function (event) {
-  event.waitUntil(addToCache(stuffToCache));
+// On install, cache core assets
+self.addEventListener("install", (event) => {
+  // Cache core assets
+  event.waitUntil(
+    caches.open(cacheVersion).then((cache) => {
+      for (const asset of coreAssets) {
+        cache.add(new Request(asset));
+      }
+      return cache;
+    })
+  );
 });
 
-// Network-first
+// Listen for request events
 self.addEventListener("fetch", (event) => {
-  // Check if this is a navigation request
-  if (event.request.mode === "navigate") {
-    // Open the cache
-    event.respondWith(
-      caches.open(cacheVersion).then((cache) => {
-        // Go to the network first
-        return fetch(event.request.url)
-          .then((fetchedResponse) => {
-            cache.put(event.request, fetchedResponse.clone());
+  // Get the request
+  const request = event.request;
+  const url = new URL(request.url);
 
-            return fetchedResponse;
-          })
-          .catch(() => {
-            // If the network is unavailable, get
-            return cache.match(event.request.url);
+  // Exclude files
+  // https://stackoverflow.com/questions/45663796/setting-service-worker-to-exclude-certain-urls-only
+  if (
+    url.pathname.includes("admin") ||
+    url.pathname.includes("netlify") ||
+    url.pathname.includes("api") ||
+    url.pathname.includes("decap")
+  ) {
+    return;
+  }
+
+  // Bug fix
+  // https://stackoverflow.com/a/49719964
+  if (
+    event.request.cache === "only-if-cached" &&
+    event.request.mode !== "same-origin"
+  ) {
+    return;
+  }
+
+  // Network-first
+  if (
+    request.headers.get("Accept").includes("text/html") ||
+    request.headers.get("Accept").includes("application/xml") ||
+    request.headers.get("Accept").includes("text/xml") ||
+    request.headers.get("Accept").includes("javascript")
+  ) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          // Create a copy of the response and save it to the cache
+          const copy = response.clone();
+          event.waitUntil(
+            caches.open(cacheVersion).then((cache) => {
+              return cache.put(request, copy);
+            })
+          );
+
+          // Return the response
+          return response;
+        })
+        .catch((error) => {
+          // If there's no item in cache, respond with a fallback
+          return caches.match(request).then(async (response) => {
+            return response || (await caches.match("/offline/"));
           });
+        })
+    );
+  } else {
+    // Get everything else from the cache
+    event.respondWith(
+      caches.match(request).then((response) => {
+        return (
+          response ||
+          fetch(request).then((response) => {
+            // Save a copy of it in cache
+            const copy = response.clone();
+            event.waitUntil(
+              caches.open(cacheVersion).then((cache) => {
+                return cache.put(request, copy);
+              })
+            );
+
+            // Return the response
+            return response;
+          })
+        );
       })
     );
-    // Serve everything else from the cache
-  } else {
-    event.respondWith(cacheFirst(event.request));
   }
 });
-
-// Functions
-async function addToCache(stuff) {
-  const cache = await caches.open(cacheVersion);
-  await cache.addAll(stuff);
-}
-
-async function cacheFirst(request) {
-  const responseFromCache = await caches.match(request);
-  if (responseFromCache) {
-    return responseFromCache;
-  }
-  const responseFromNetwork = await fetch(request);
-  putInCache(request, responseFromNetwork.clone());
-  return responseFromNetwork;
-}
-
-async function putInCache(request, response) {
-  const cache = await caches.open("v1");
-  await cache.put(request, response);
-}
